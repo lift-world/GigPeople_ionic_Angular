@@ -1,0 +1,108 @@
+<!-- Header Container
+================================================== -->
+<header id="header-container" class="fullwidth">
+
+  <!-- Header -->
+  <div id="header">
+    <div class="container">
+
+      <!-- Left Side Content -->
+      <div class="left-side">
+
+        <!-- Logo -->
+        <div id="logo">
+          <a [routerLink]="['/']"><img src="assets/images/logo2.png"></a>
+        </div>
+
+        <!-- Main Navigation -->
+        <nav id="navigation">
+          <ul id="responsive">
+
+            <li><a [routerLink]="['/']" class=""><i class="icon-material-outline-home
+            "></i> Home</a></li>
+
+            <li *ngIf="userIsAuthenticated"><a [routerLink]="['/browse-tasks']">
+              <i class="icon-material-outline-assignment"></i>Browse Tasks</a>
+
+            <li *ngIf="userIsAuthenticated"><a [routerLink]="['/post-task']" class="">
+              <i class="icon-material-outline-add"></i>New Task</a></li>
+
+            <li *ngIf="userIsAuthenticated"><a href="#">soon</a>
+              <ul class="dropdown-nav">
+
+                <li *ngIf="userIsAuthenticated"><a [routerLink]="['/mytasks']" class=""><i class="icon-material-outline-assignment"></i>My Tasks</a></li>
+
+                <li *ngIf="userIsAuthenticated"><a [routerLink]="['/manage-bidders']" class=""><i class="icon-feather-users
+                "></i>Manage Bidders</a></li>
+
+              </ul>
+            </li>
+
+            <li><a [routerLink]="['/about']" class=""><i class="icon-material-outline-group
+            "></i> About Us</a></li>
+
+            <!-- <li><a [routerLink]="['/becomeSeller']" class=""><i class="icon-material-outline-local-atm
+            "></i> Become a Seller</a></li> -->
+
+            <li><a [routerLink]="['/contact']" class=""><i class="icon-material-outline-help-outline"></i>
+                Help & Support</a></li>
+
+            <li *ngIf="!userIsAuthenticated"><a [routerLink]="['/login']" class=""><i class="icon-feather-upload-cloud
+            "></i> Sign In</a></li>
+
+          </ul>
+        </nav>
+        <div class="clearfix"></div>
+        <!-- Main Navigation / End -->
+
+      </div>
+      <!-- Left Side Content / End -->
+
+
+      <!-- Right Side Content / End -->
+      <div class="right-side">
+
+        <!--  User Notifications -->
+        <div class="header-widget hide-on-mobile">
+
+          <!-- Notifications -->
+          <div class="header-notifications">
+
+            <div class="intro-search-button" *ngIf="!userIsAuthenticated">
+              <button class="button ripple-effect" [routerLink]="['/signup']">Join Now</button>
+            </div>
+
+            <div class="intro-search-button" *ngIf="userIsAuthenticated">
+              <button class="button ripple-effect" (click)="onLogout()">Logout</button>
+            </div>
+
+          </div>
+
+        </div>
+        <!--  User Notifications / End -->
+
+        <!-- User Menu -->
+
+        <!-- User Menu / End -->
+
+        <!-- Mobile Navigation Button -->
+        <span class="mmenu-trigger">
+          <button class="hamburger hamburger--collapse" type="button" (click)="onMenuToggle()">
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+          </button>
+        </span>
+
+      </div>
+      <!-- Right Side Content / End -->
+
+    </div>
+  </div>
+  <!-- Header / End -->
+
+</header>
+
+
+<div class="clearfix"></div>
+<!-- Header Container / End -->

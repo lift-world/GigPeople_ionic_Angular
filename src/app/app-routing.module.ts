@@ -7,6 +7,10 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth-routing.module').then(m => m.AuthRoutingModule)
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
