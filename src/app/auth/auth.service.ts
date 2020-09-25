@@ -44,6 +44,8 @@ export class AuthService {
   }
 
   login(email: string, password: string) {
+    this.isLoading = true;
+    this.subjectLoading.next(true);
     const authData: AuthData = { email, password };
     this.http
       .post<{ token: string; expiresIn: number }>(
