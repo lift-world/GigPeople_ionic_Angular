@@ -31,3 +31,12 @@ ion-toolbar{
 ion-content{
   min-height: 1000px;
 }
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+  background-color: lightpink;
+}
+
+ion-button {
+ text-transform: none;
+}

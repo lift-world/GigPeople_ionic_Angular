@@ -15,6 +15,9 @@ export class AuthService {
   private isAuthenticated = false;
   private authStatusListener = new Subject<boolean>();
 
+  isLoading: boolean = false;
+  subjectLoading = new Subject<boolean>();
+
   constructor(private http: HttpClient, private router: Router) { }
 
   getToken() {
@@ -29,12 +32,14 @@ export class AuthService {
     return this.authStatusListener.asObservable();
   }
 
-  createUser(email: string, password: string) {
-    const authData: AuthData = { email, password };
+  createUser(email: string, password: string, firstName: string, lastName: string, country: string) {
+    this.isLoading = true;
+    this.subjectLoading.next(true);
     this.http
-      .post(this.serverURL + '/api/user/signup', authData)
+      .post(this.serverURL + "/api/user/signup", { email, password, firstName, lastName, country})
       .subscribe((resp) => {
         console.log(resp);
+        this.login(email, password);
       });
   }
 
@@ -60,6 +65,9 @@ export class AuthService {
           );
           this.saveAuthData(this.token, expirationDate);
           this.router.navigate(['/']);
+          
+          this.isLoading = false;
+          this.subjectLoading.next(false);
         }
       });
   }
