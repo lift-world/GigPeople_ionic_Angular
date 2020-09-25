@@ -47,8 +47,7 @@
               <input type="password" class="input-text with-border" placeholder="Password" formControlName="password"/>
             </div>
   
-            <app-recaptcha *ngIf="form.valid"
-            (handleToggle)="handleRecaptcha($event)"></app-recaptcha>
+            <app-recaptcha (handleToggle)="handleRecaptcha($event)"></app-recaptcha>
    
             <div *ngIf="form.touched && form.invalid" style="text-align:center; color: red;">Please fill with valid form data.
             </div>
