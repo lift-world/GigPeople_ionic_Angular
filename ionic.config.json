@@ -1,5 +1,7 @@
 {
   "name": "gigpeople",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

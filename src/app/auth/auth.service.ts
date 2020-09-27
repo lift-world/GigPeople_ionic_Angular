@@ -53,6 +53,7 @@ export class AuthService {
         authData
       )
       .subscribe((resp) => {
+        console.log("xxxxx="+resp+"xxxx");
         this.token = resp.token;
         if (this.token) {
           const expiresInDuration = resp.expiresIn;
