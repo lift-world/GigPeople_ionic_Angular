@@ -32,6 +32,7 @@
               }
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               {
                 "input": "src/theme/variables.scss"
               },
@@ -39,9 +40,24 @@
                 "input": "src/global.scss"
               },
               "src/assets/css/style.css",
-              "src/assets/css/colors/orange.css"
+              "src/assets/css/colors/orange.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/jquery-3.4.1.min.js",
+              "src/assets/js/jquery-migrate-3.1.0.min.js",
+              "src/assets/js/mmenu.min.js",
+              "src/assets/js/tippy.all.min.js",
+              "src/assets/js/simplebar.min.js",
+              "src/assets/js/bootstrap-slider.min.js",
+              "src/assets/js/bootstrap-select.min.js",
+              "src/assets/js/snackbar.js",
+              "src/assets/js/clipboard.min.js",
+              "src/assets/js/counterup.min.js",
+              "src/assets/js/magnific-popup.min.js",
+              "src/assets/js/slick.min.js",
+              "src/assets/js/custom.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -100,7 +116,9 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "styles": [],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
+            ],
             "scripts": [],
             "assets": [
               {

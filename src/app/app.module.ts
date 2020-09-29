@@ -6,21 +6,34 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth/auth-interceptor';
+
 import { SharedModule } from './shared/shared.module';
 
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from './material.module';
+
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LoginComponent, SignupComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
     IonicModule.forRoot({ animated: false }),
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     SharedModule,
   ],
   providers: [
