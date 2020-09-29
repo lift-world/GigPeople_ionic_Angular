@@ -18,12 +18,12 @@
         <nav id="navigation">
           <ul id="responsive">
 
-            <li><a [routerLink]="['/']" class=""><i class="icon-material-outline-home
+            <li><a [routerLink]="['/home']" class=""><i class="icon-material-outline-home
             "></i> Home</a></li>
 
             <li *ngIf="userIsAuthenticated"><a [routerLink]="['/browse-tasks']">
               <i class="icon-material-outline-assignment"></i>Browse Tasks</a>
-
+<!-- 
             <li *ngIf="userIsAuthenticated"><a [routerLink]="['/post-task']" class="">
               <i class="icon-material-outline-add"></i>New Task</a></li>
 
@@ -36,15 +36,15 @@
                 "></i>Manage Bidders</a></li>
 
               </ul>
-            </li>
+            </li> -->
 
-            <li><a [routerLink]="['/about']" class=""><i class="icon-material-outline-group
+            <li><a [routerLink]="['/home/about']" class=""><i class="icon-material-outline-group
             "></i> About Us</a></li>
 
             <!-- <li><a [routerLink]="['/becomeSeller']" class=""><i class="icon-material-outline-local-atm
             "></i> Become a Seller</a></li> -->
 
-            <li><a [routerLink]="['/help']" class=""><i class="icon-material-outline-help-outline"></i>
+            <li><a [routerLink]="['/home/help']" class=""><i class="icon-material-outline-help-outline"></i>
                 Help & Support</a></li>
 
           </ul>
@@ -230,8 +230,8 @@
               </div>
 
               <ul class="user-menu-small-nav">
-                <li><a href="dashboard.html"><i class="icon-material-outline-dashboard"></i> Dashboard</a></li>
-                <li><a href="dashboard-settings.html"><i class="icon-material-outline-settings"></i> Settings</a></li>
+                <li><a [routerLink]="'me/dashboard'"><i class="icon-material-outline-dashboard"></i> Dashboard</a></li>
+                <li><a [routerLink]="'me/settings'"><i class="icon-material-outline-settings"></i> Settings</a></li>
                 <li><a href="#" (click)="onClickLogout()"><i class="icon-material-outline-power-settings-new"></i> Logout</a></li>
               </ul>
 

@@ -17,6 +17,8 @@ import { ManageBiddersComponent } from './manage-bidders/manage-bidders.componen
 import { MyActiveBidsComponent } from './my-active-bids/my-active-bids.component';
 import { PostTaskComponent } from './post-task/post-task.component';
 import { SettingsComponent } from './settings/settings.component';
+import { SmallFooterComponent } from './components/small-footer/small-footer.component';
+import { DashboardSidebarComponent } from './components/dashboard-sidebar/dashboard-sidebar.component';
 
 @NgModule({
   imports: [
@@ -28,6 +30,7 @@ import { SettingsComponent } from './settings/settings.component';
   ],
   declarations: [
     MePage,
+    //Pages
     DashboardComponent,
     MessagesComponent,
     BookmarksComponent,
@@ -36,7 +39,11 @@ import { SettingsComponent } from './settings/settings.component';
     ManageBiddersComponent,
     MyActiveBidsComponent,
     PostTaskComponent,
-    SettingsComponent
+    SettingsComponent,
+
+    //Components
+    SmallFooterComponent,
+    DashboardSidebarComponent
   ]
 })
 export class MePageModule {}

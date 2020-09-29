@@ -6,6 +6,9 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { AboutComponent } from './about/about.component';
+import { HelpComponent } from './help/help.component';
 
 @NgModule({
   imports: [
@@ -16,7 +19,10 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule
   ],
   declarations: [
-    HomePage
+    HomePage,
+    LandingPageComponent,
+    AboutComponent,
+    HelpComponent
   ]
 })
 export class HomePageModule {}

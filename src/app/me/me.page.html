@@ -1,1 +1,22 @@
-<router-outlet></router-outlet>
+<!-- Dashboard Container -->
+<div class="dashboard-container">
+
+  <app-dashboard-sidebar></app-dashboard-sidebar>
+
+  <!-- Dashboard Content
+	================================================== -->
+  <div class="dashboard-content-container" data-simplebar>
+    <div class="dashboard-content-inner">
+
+      <router-outlet></router-outlet>
+
+      <app-small-footer></app-small-footer>
+
+    </div>
+  </div>
+  <!-- Dashboard Content / End -->
+
+</div>
+<!-- Dashboard Container / End -->
+
+
