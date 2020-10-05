@@ -1,3 +1,77 @@
-<p>
-  worker-profile works!
-</p>
+<form class="dashboard-box" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
+  <!-- Headline -->
+  <div class="headline">
+    <ion-toolbar>
+      <div slot="start">
+        <h3><i class="icon-material-outline-account-circle"></i>
+          Freelancer Profile</h3>
+      </div>
+
+      <button slot="end" class="button" type="submit">Save Changes</button>
+    </ion-toolbar>
+  </div>
+
+  <div class="content with-padding">
+    <div class="row">
+      <div class="col-xl-6">
+        <div class="submit-field">
+          <h5>Hourly Rate ( USD ) </h5>
+          <input type="text" class="with-border" formControlName="hourlyRate">
+        </div>
+      </div>
+
+    </div>
+
+
+
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="submit-field">
+          <h5>Tagline</h5>
+          <input type="text" class="with-border" formControlName="title">
+        </div>
+      </div>
+
+      <div class="col-xl-12">
+        <div class="submit-field">
+          <h5>Introduce Yourself</h5>
+          <ion-textarea cols="30" rows="8"
+            formControlName="description"
+            style="color: grey; border: 1px solid lightgrey;"
+          >
+          </ion-textarea>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="submit-field">
+          <h5>Skills <i class="help-icon" data-tippy-placement="right" title="Add up to 10 skills"></i>
+          </h5>
+
+          <!-- Skills List -->
+          <div class="keywords-container">
+            <div class="keyword-input-container">
+              <input type="text" class="keyword-input with-border" placeholder="e.g. Angular, Laravel" />
+              <button class="keyword-input-button ripple-effect"><i class="icon-material-outline-add"></i></button>
+            </div>
+            <div class="keywords-list">
+              <span class="keyword"><span class="keyword-remove"></span><span class="keyword-text">Angular</span></span>
+              <span class="keyword"><span class="keyword-remove"></span><span class="keyword-text">Vue
+                  JS</span></span>
+              <span class="keyword"><span class="keyword-remove"></span><span class="keyword-text">iOS</span></span>
+              <span class="keyword"><span class="keyword-remove"></span><span class="keyword-text">Android</span></span>
+              <span class="keyword"><span class="keyword-remove"></span><span class="keyword-text">Laravel</span></span>
+              </div>
+    
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+</form>

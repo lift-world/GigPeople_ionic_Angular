@@ -1,3 +1,36 @@
-<p>
-  employer-profile works!
-</p>
+<form class="dashboard-box" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
+  <!-- Headline -->
+  <div class="headline">
+    <ion-toolbar>
+      <div slot="start">
+        <h3><i class="icon-material-outline-business-center"></i>
+          Employer Profile</h3>
+      </div>
+
+      <button slot="end" class="button" type="submit">Save Changes</button>
+    </ion-toolbar>
+  </div>
+
+  <div class="content with-padding">
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="submit-field">
+          <h5>Tagline</h5>
+          <input type="text" class="with-border" formControlName="title">
+        </div>
+      </div>
+
+      <div class="col-xl-12">
+        <div class="submit-field">
+          <h5>Introduce Yourself</h5>
+          <ion-textarea cols="30" rows="8"
+            formControlName="description"
+            style="color: grey; border: 1px solid lightgrey;"
+            ></ion-textarea>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</form>

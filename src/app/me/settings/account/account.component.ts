@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { Country } from 'src/app/interfaces/Country';
 import { UserService } from 'src/app/services/user.service';
+import { Country } from 'src/app/interfaces/Country';
 import * as countryList from "country-list";
 
 @Component({
@@ -11,11 +11,12 @@ import * as countryList from "country-list";
   styleUrls: ["./account.component.scss"],
 })
 export class AccountComponent implements OnInit, AfterViewInit {
+  arrCountry: Country[];
   constructor(private userService: UserService) {}
 
   me;
+  isLoading = true;
   subsMe: Subscription;
-  arrCountry: Country[];
   userForm: FormGroup;
 
   ngOnInit() {
@@ -26,6 +27,7 @@ export class AccountComponent implements OnInit, AfterViewInit {
 
     this.initUserForm(this.me);
     this.subsMe = this.userService.subjectMe.subscribe(({ me, isLoading }) => {
+      this.isLoading = isLoading;
       this.me = me;
       this.initUserForm(this.me);
     });
