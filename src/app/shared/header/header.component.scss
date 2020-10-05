@@ -7,3 +7,14 @@
     width: 200px;
   }
 }
+
+.router-link-active {
+	color: red;
+  font-weight: bold;
+}
+
+#header-container{
+  position: fixed;
+  top:0;
+  left: 0;
+}

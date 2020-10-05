@@ -4,9 +4,9 @@ import { Subscription } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
+  selector: "app-header",
+  templateUrl: "./header.component.html",
+  styleUrls: ["./header.component.scss"],
 })
 export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   userIsAuthenticated = false;
@@ -19,10 +19,9 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     private authService: AuthService,
     private userService: UserService
-  ) { }
+  ) {}
 
-  ngAfterViewInit(): void {
-  }
+  ngAfterViewInit(): void {}
 
   ngOnInit(): void {
     this.userIsAuthenticated = this.authService.getIsAuth();
@@ -34,10 +33,12 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.me = this.userService.me;
     this.isLoadingMe = this.userService.isLoading;
-    this.subsMe = this.userService.subjectMe.subscribe((data: {me:any, isLoading :boolean }) => { 
-      this.isLoadingMe = data.isLoading;
-      this.me = data.me;
-    });
+    this.subsMe = this.userService.subjectMe.subscribe(
+      (data: { me: any; isLoading: boolean }) => {
+        this.isLoadingMe = data.isLoading;
+        this.me = data.me;
+      }
+    );
   }
 
   ngOnDestroy(): void {
@@ -49,13 +50,15 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     this.authService.logout();
   }
 
-  onMenuToggle() {
-    console.log("Menu!");
+  isUserMenu = false;
+  toggleUserMenu() {
+    this.isUserMenu = !this.isUserMenu;
+    return false;
   }
 
   onClickLogout() {
     this.authService.logout();
-    
+
     return false; // disable href
   }
 }

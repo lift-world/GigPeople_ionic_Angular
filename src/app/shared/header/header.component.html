@@ -18,13 +18,19 @@
         <nav id="navigation">
           <ul id="responsive">
 
-            <li><a [routerLink]="['/home']" class=""><i class="icon-material-outline-home
-            "></i> Home</a></li>
+            <li>
+              <a [routerLink]="['/home']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{exact: true}">
+                <i class="icon-material-outline-home"></i> 
+                Home
+              </a>
+            </li>
 
-            <li *ngIf="userIsAuthenticated"><a [routerLink]="['/browse-tasks']">
-              <i class="icon-material-outline-assignment"></i>Browse Tasks</a>
-<!-- 
-            <li *ngIf="userIsAuthenticated"><a [routerLink]="['/post-task']" class="">
+            <li *ngIf="userIsAuthenticated">
+              <a [routerLink]="['/browse-tasks']" routerLinkActive="router-link-active">
+                <i class="icon-material-outline-assignment"></i>Browse Tasks
+              </a>
+            </li>
+            <!-- <li *ngIf="userIsAuthenticated"><a [routerLink]="['/post-task']" class="">
               <i class="icon-material-outline-add"></i>New Task</a></li>
 
             <li *ngIf="userIsAuthenticated"><a href="#">soon</a>
@@ -38,13 +44,13 @@
               </ul>
             </li> -->
 
-            <li><a [routerLink]="['/home/about']" class=""><i class="icon-material-outline-group
+            <li><a [routerLink]="['/home/about']" routerLinkActive="router-link-active"><i class="icon-material-outline-group
             "></i> About Us</a></li>
 
             <!-- <li><a [routerLink]="['/becomeSeller']" class=""><i class="icon-material-outline-local-atm
             "></i> Become a Seller</a></li> -->
 
-            <li><a [routerLink]="['/home/help']" class=""><i class="icon-material-outline-help-outline"></i>
+            <li><a [routerLink]="['/home/help']" routerLinkActive="router-link-active"><i class="icon-material-outline-help-outline"></i>
                 Help & Support</a></li>
 
           </ul>
@@ -206,10 +212,12 @@
         <div class="header-widget">
 
           <!-- Messages -->
-          <div class="header-notifications user-menu">
+          <div class="header-notifications user-menu" [ngClass]="isUserMenu?'active':''"
+           (mouseenter)="isUserMenu=true" (mouseleave)="isUserMenu=false"
+          >
             <div class="header-notifications-trigger">
-              <a href="#">
-                <div class="user-avatar status-online"><img src="assets/images/user-avatar-small-01.jpg" alt=""></div>
+              <a href="#" (click)="toggleUserMenu()">
+                <div class="user-avatar status-online"><img [src]="me?.avatar || 'assets/images/user-avatar-placeholder.png'" alt=""></div>
               </a>
             </div>
 
@@ -221,7 +229,7 @@
 
                 <!-- User Name / Avatar -->
                 <div class="user-details">
-                  <div class="user-avatar status-online"><img src="assets/images/user-avatar-small-01.jpg" alt=""></div>
+                  <div class="user-avatar status-online"><img [src]="me?.avatar || 'assets/images/user-avatar-placeholder.png'" alt=""></div>
                   <div class="user-name">
                     {{me?.firstName}} {{me?.lastName}}
                   </div>

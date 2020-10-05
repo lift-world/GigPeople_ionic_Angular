@@ -19,24 +19,38 @@
         <div class="dashboard-nav-inner">
 
           <ul>
-            <li><a [routerLink]="'dashboard'"><i class="icon-material-outline-dashboard"></i> Dashboard</a></li>
-            <li><a [routerLink]="'messages'"><i class="icon-material-outline-question-answer"></i> Messages <span
-                  class="nav-tag">2</span></a></li>
-            <li><a  [routerLink]="'bookmarks'"><i class="icon-material-outline-star-border"></i> Bookmarks</a>
+            <li [routerLink]="'dashboard'" routerLinkActive="active">
+              <a href="#"><i class="icon-material-outline-dashboard"></i> Dashboard</a>
             </li>
-            <li><a [routerLink]="'reviews'"><i class="icon-material-outline-rate-review"></i> Reviews</a></li>
+
+            <li [routerLink]="'messages'" routerLinkActive="active">
+              <a href="#"><i class="icon-material-outline-question-answer"></i> Messages <span class="nav-tag">2</span></a>
+            </li>
+            <li [routerLink]="'bookmarks'" routerLinkActive="active">
+              <a href="#"><i class="icon-material-outline-star-border"></i> Bookmarks</a>
+            </li>
+            <li [routerLink]="'reviews'" routerLinkActive="active">
+              <a href="#"><i class="icon-material-outline-rate-review"></i> Reviews</a>
+            </li>
           </ul>
           
           <ul data-submenu-title="Tasks">
-            <li><a  [routerLink]="'manage-tasks'">Manage Tasks <span class="nav-tag">2</span></a></li>
-            <li><a [routerLink]="'manage-bidders'">Manage Bidders</a></li>
-            <li><a [routerLink]="'my-active-bids'">My Active Bids <span class="nav-tag">4</span></a></li>
-            <li><a [routerLink]="'post-task'">Post a Task</a></li>
+            <li [routerLink]="'manage-tasks'" routerLinkActive="active">
+              <a href="#">Manage Tasks <span class="nav-tag">2</span></a>
+            </li>
+            <li [routerLink]="'manage-bidders'" routerLinkActive="active">
+              <a href="#">Manage Bidders</a>
+            </li>
+            <li [routerLink]="'my-active-bids'" routerLinkActive="active">
+              <a href="#">My Active Bids <span class="nav-tag">4</span></a>
+            </li>
+            <li [routerLink]="'post-task'" routerLinkActive="active">
+              <a href="#">Post a Task</a>
+            </li>
           </ul>
 
           <ul data-submenu-title="Account">
-            <li class="active"><a [routerLink]="'settings'"><i class="icon-material-outline-settings"></i>
-                Settings</a></li>
+            <li [routerLink]="'settings'" routerLinkActive="active"><a href="#"><i class="icon-material-outline-settings"></i>Settings</a></li>
             <li><a href="#" (click)="onClickLogout()"><i class="icon-material-outline-power-settings-new"></i> Logout</a>
             </li>
           </ul>

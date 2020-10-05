@@ -1,35 +1,77 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '../auth/auth.guard';
-import { BookmarksComponent } from './bookmarks/bookmarks.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { ManageBiddersComponent } from './manage-bidders/manage-bidders.component';
-import { ManageTasksComponent } from './manage-tasks/manage-tasks.component';
-
 import { MePage } from './me.page';
-import { MessagesComponent } from './messages/messages.component';
-import { MyActiveBidsComponent } from './my-active-bids/my-active-bids.component';
-import { PostTaskComponent } from './post-task/post-task.component';
-import { ReviewsComponent } from './reviews/reviews.component';
-import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: "",
     component: MePage,
     canActivate: [AuthGuard],
     children: [
-      { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'messages', component: MessagesComponent },
-      { path: 'bookmarks', component: BookmarksComponent },
-      { path: 'reviews', component: ReviewsComponent },
-      { path: 'manage-tasks', component: ManageTasksComponent },
-      { path: 'manage-bidders', component: ManageBiddersComponent },
-      { path: 'my-active-bids', component: MyActiveBidsComponent },
-      { path: 'post-task', component: PostTaskComponent },
-      { path: 'settings', component: SettingsComponent },
-    ]
+      { path: "", pathMatch: "full", redirectTo: "dashboard" },
+      {
+        path: "settings",
+        loadChildren: () =>
+          import("./settings/settings.module").then(
+            (m) => m.SettingsPageModule
+          ),
+      },
+      {
+        path: "dashboard",
+        loadChildren: () =>
+          import("./dashboard/dashboard.module").then(
+            (m) => m.DashboardPageModule
+          ),
+      },
+      {
+        path: "bookmarks",
+        loadChildren: () =>
+          import("./bookmarks/bookmarks.module").then(
+            (m) => m.BookmarksPageModule
+          ),
+      },
+      {
+        path: "manage-bidders",
+        loadChildren: () =>
+          import("./manage-bidders/manage-bidders.module").then(
+            (m) => m.ManageBiddersPageModule
+          ),
+      },
+      {
+        path: "manage-tasks",
+        loadChildren: () =>
+          import("./manage-tasks/manage-tasks.module").then(
+            (m) => m.ManageTasksPageModule
+          ),
+      },
+      {
+        path: "messages",
+        loadChildren: () =>
+          import("./messages/messages.module").then(
+            (m) => m.MessagesPageModule
+          ),
+      },
+      {
+        path: "my-active-bids",
+        loadChildren: () =>
+          import("./my-active-bids/my-active-bids.module").then(
+            (m) => m.MyActiveBidsPageModule
+          ),
+      },
+      {
+        path: "post-task",
+        loadChildren: () =>
+          import("./post-task/post-task.module").then(
+            (m) => m.PostTaskPageModule
+          ),
+      },
+      {
+        path: "reviews",
+        loadChildren: () =>
+          import("./reviews/reviews.module").then((m) => m.ReviewsPageModule),
+      },
+    ],
   },
 ];
 
