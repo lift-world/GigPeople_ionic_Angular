@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { TaskService, Task } from 'src/app/services/task.service';
+import { Task } from 'src/app/interfaces/models';
+import { TaskService } from 'src/app/services/task.service';
 
 @Component({
   selector: 'app-list',
@@ -10,9 +11,16 @@ import { TaskService, Task } from 'src/app/services/task.service';
 export class ListComponent implements OnInit, OnDestroy {
   constructor(private taskService: TaskService) { }
 
+  isLoading = true;
+  subsLoading: Subscription;
   tasks: Task[];
   subsTasks: Subscription;
   ngOnInit(): void {
+    this.isLoading = this.taskService.isLoading;
+    this.subsLoading = this.taskService.subjectLoading.subscribe((isLoading) => { 
+      this.isLoading = isLoading;
+    });
+
     this.taskService.readByFilter(null);
     this.subsTasks = this.taskService.subjectTasks.subscribe((tasks: Task[]) => {
       this.tasks = tasks;

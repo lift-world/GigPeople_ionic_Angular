@@ -1,0 +1,8 @@
+<form class="example-form">
+  <input type="text" [placeholder]="placeholder" [matAutocomplete]="auto" [formControl]="mycontrol" (keydown)="onSelect($event)">
+  <mat-autocomplete autoActiveFirstOption  #auto="matAutocomplete">
+    <mat-option *ngFor="let x of filteredArr | async" [value]="x.title">
+      {{x.title}}
+    </mat-option>
+  </mat-autocomplete>
+</form>

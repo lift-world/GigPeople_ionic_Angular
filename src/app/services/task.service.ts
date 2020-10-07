@@ -1,7 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
 import { environment } from "../../environments/environment"; 
+import { Task } from '../interfaces/models';
+import { TaskFilter } from '../interfaces/TaskFilter';
 
 @Injectable({
   providedIn: 'root'
@@ -15,15 +18,15 @@ export class TaskService {
   tasks: Task[];
   subjectTasks = new Subject<Task[]>();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private toastr: ToastrService) { }
 
-  createOne(task: Task, myfile: File) {
+  createOne(data, myfile: File) {
     this.isLoading = true;
     this.subjectLoading.next(true);
 
     const formData = new FormData;
-    formData.append('taskData', JSON.stringify(task));
-    formData.append('myfile', myfile, task.title);
+    formData.append('taskData', JSON.stringify(data));
+    formData.append('myfile', myfile, data.title);
 
     this.http
       .post(this.serverURL + '/api/task', formData)
@@ -31,6 +34,10 @@ export class TaskService {
         this.tasks.unshift(task);
         this.subjectTasks.next(this.tasks);
         this.isLoading = false;
+        this.subjectLoading.next(false);
+      }, (err) => { 
+        console.log(err);
+        this.toastr.error("Server", err.error.message || err.message);
         this.subjectLoading.next(false);
       });
   }
@@ -44,6 +51,7 @@ export class TaskService {
     this.subjectLoading.next(true);
 
     this.http.post<Task[]>(this.serverURL + "/api/task/readbyfilter", taskFilter).subscribe((tasks: Task[]) => {
+      console.log(tasks);
       this.tasks = tasks;
       this.subjectTasks.next(tasks);
       this.isLoading = false;
@@ -52,30 +60,3 @@ export class TaskService {
   }
 }
 
-export interface Task {
-  _id: string;
-  refCreator: string;
-  refCategory: string;
-  refSkills: string[];
-  title: string;
-  description: string;
-  filePath: string;
-  country: string;
-  minBudget: number;
-  maxBudget: number;
-  isHourly: boolean;
-  refBids: string[];
-  status: number;
-  timestamp: Date;
-}
-
-export interface TaskFilter {
-  location: string;
-  category: string;
-  keywords: string[];
-  minFixed: number;
-  maxFixed: number;
-  minHourly: number;
-  maxHourly: number;
-  skills: string[];
-}

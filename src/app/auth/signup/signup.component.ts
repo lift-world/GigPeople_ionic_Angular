@@ -2,8 +2,6 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { Subscription } from "rxjs";
 import { AuthService } from "../auth.service";
-import { Country } from 'src/app/interfaces/Country';
-import * as countryList from "country-list";
 
 @Component({
   selector: "app-signup",
@@ -11,14 +9,11 @@ import * as countryList from "country-list";
   styleUrls: ["./signup.component.scss"],
 })
 export class SignupComponent implements OnInit, OnDestroy {
-  arrCountry: Country[];
   constructor(private authService: AuthService) {}
 
   isLoading: boolean = false;
   subsLoading: Subscription;
   ngOnInit() {
-    this.arrCountry = countryList.getData();
-
     this.isLoading = this.authService.isLoading;
     this.subsLoading = this.authService.subjectLoading.subscribe(
       (isLoading) => {

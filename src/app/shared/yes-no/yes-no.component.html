@@ -1,0 +1,11 @@
+<div class="feedback-yes-no margin-top-0">
+  <div class="radio">
+    <input id="radio-1" type="radio" (click)="handleSelect(false)" [checked]="!value">
+    <label for="radio-1"><span class="radio-label"></span> {{strNo}}</label>
+  </div>
+
+  <div class="radio">
+    <input id="radio-2" type="radio" (click)="handleSelect(true)" [checked]="value">
+    <label for="radio-2"><span class="radio-label"></span> {{strYes}}</label>
+  </div>
+</div>

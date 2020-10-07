@@ -48,10 +48,7 @@
           <div class="input-with-icon-left">
             <i class="icon-line-awesome-map-marker"></i>
             <div style="margin-left: 48px;">
-              <select class="with-border" style="padding: 0 10px;" placeholder="Country" formControlName="country">
-                <option *ngFor="let country of arrCountry; let i=index;" [value]="country.code">{{country.name}}
-                </option>
-              </select>
+              <app-country-picker formControlName="country"></app-country-picker>
             </div>
           </div>
 

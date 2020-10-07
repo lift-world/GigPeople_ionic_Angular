@@ -27,10 +27,15 @@
 
 
 input.ng-invalid.ng-touched, ion-textarea.ng-invalid.ng-touched {
-  border: 1px solid red;
-  background-color: lightpink;
+  // border: 1px solid red;
+  // background-color: lightpink;
 }
 
 ion-button {
  text-transform: none;
+}
+
+ion-textarea{
+  color: grey; 
+  border: 1px solid lightgrey;
 }

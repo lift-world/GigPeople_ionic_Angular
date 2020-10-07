@@ -1,9 +1,10 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Task } from 'src/app/interfaces/models';
 import { Bid, BidService } from 'src/app/services/bid.service';
 
-import { Task, TaskService } from 'src/app/services/task.service';
+import { TaskService } from 'src/app/services/task.service';
 
 @Component({
   selector: 'app-single-task',

@@ -1,0 +1,4 @@
+<select class="with-border" style="padding: 0 10px;" placeholder="Select a Category" (change)="handleSelect($event)">
+  <option *ngFor="let category of categories; let i=index;" [value]="category._id">{{category.title}}
+  </option>
+</select>

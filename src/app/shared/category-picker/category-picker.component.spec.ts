@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { PostTaskPage } from './post-task.page';
+import { CategoryPickerComponent } from './category-picker.component';
 
-describe('PostTaskPage', () => {
-  let component: PostTaskPage;
-  let fixture: ComponentFixture<PostTaskPage>;
+describe('CategoryPickerComponent', () => {
+  let component: CategoryPickerComponent;
+  let fixture: ComponentFixture<CategoryPickerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PostTaskPage ],
+      declarations: [ CategoryPickerComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(PostTaskPage);
+    fixture = TestBed.createComponent(CategoryPickerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

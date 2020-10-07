@@ -1,0 +1,4 @@
+<select class="with-border" style="padding: 0 10px;" placeholder="Country" (change)="handleSelect($event)">
+  <option *ngFor="let country of countries; let i=index;" [value]="country.code">{{country.name}}
+  </option>
+</select>
