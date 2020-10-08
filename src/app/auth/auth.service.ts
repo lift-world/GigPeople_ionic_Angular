@@ -83,7 +83,9 @@ export class AuthService {
         }
       }, err => { 
         console.log(err);
-        this.toastr.error("Server", err.error.message);
+        this.toastr.error(err.error.message||err.message , "Server");
+        this.isLoading = false;
+        this.subjectLoading.next(false);
       });
   }
 

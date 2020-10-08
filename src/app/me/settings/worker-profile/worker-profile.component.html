@@ -50,22 +50,7 @@
           <h5>Skills <i class="help-icon" data-tippy-placement="right" title="Add up to 10 skills"></i>
           </h5>
 
-          <!-- Skills List -->
-          <div class="keywords-container">
-            <div class="keyword-input-container">
-              <input type="text" class="keyword-input with-border" placeholder="e.g. Angular, Laravel" />
-              <button class="keyword-input-button ripple-effect"><i class="icon-material-outline-add"></i></button>
-            </div>
-            <div class="keywords-list">
-              <span class="keyword"><span class="keyword-remove"></span><span class="keyword-text">Angular</span></span>
-              <span class="keyword"><span class="keyword-remove"></span><span class="keyword-text">Vue
-                  JS</span></span>
-              <span class="keyword"><span class="keyword-remove"></span><span class="keyword-text">iOS</span></span>
-              <span class="keyword"><span class="keyword-remove"></span><span class="keyword-text">Android</span></span>
-              <span class="keyword"><span class="keyword-remove"></span><span class="keyword-text">Laravel</span></span>
-              </div>
-    
-          </div>
+          <app-skills-picker formControlName="refSkills"></app-skills-picker>
           <div class="clearfix"></div>
         </div>
       </div>

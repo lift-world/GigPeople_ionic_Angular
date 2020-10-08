@@ -36,7 +36,6 @@ export class WorkerProfileComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    console.log('destroy');
     this.subsProfile.unsubscribe();
   }
 
@@ -51,6 +50,9 @@ export class WorkerProfileComponent implements OnInit, OnDestroy {
       description: new FormControl(null, {
         validators: [Validators.required],
       }),
+      refSkills: new FormControl([], {
+        validators: [Validators.required],
+      }),
     });
   }
 
@@ -59,7 +61,8 @@ export class WorkerProfileComponent implements OnInit, OnDestroy {
     this.myForm.setValue({
       hourlyRate: data.hourlyRate,
       title: data.title,
-      description: data.description
+      description: data.description,
+      refSkills: data.refSkills
     });
   }
 
@@ -69,6 +72,7 @@ export class WorkerProfileComponent implements OnInit, OnDestroy {
       hourlyRate: this.myForm.value.hourlyRate,
       title: this.myForm.value.title,
       description: this.myForm.value.description,
+      refSkills: this.myForm.value.refSkills
     });
   }
 }

@@ -21,11 +21,13 @@ export class UserService {
     this.http.get(this.serverURL + "/api/user/me").subscribe(
       (resp) => {
         this.me = resp;
+        this.isLoading = false;
         this.subjectMe.next({ me: resp, isLoading: false });
       },
       (err) => {
         console.log(err);
-        this.toastr.error("Server", err.error.message||err.message);
+        this.toastr.error(err.error.message || err.message, "Server");
+        this.isLoading = false;
         this.subjectMe.next({ me: null, isLoading: false });
       }
     );
@@ -42,10 +44,13 @@ export class UserService {
     this.http.put(this.serverURL + "/api/user/me", formData).subscribe(
       (resp) => {
         this.toastr.success("Updated successfully", "User");
+        this.isLoading = false;
         this.subjectMe.next({ me: resp, isLoading: false });
       },
       (err) => {
         console.log(err);
+        this.isLoading = false;
+        this.subjectMe.next({ me: null, isLoading: false });
         this.toastr.error("Server", err.error.message||err.message);
       }
     );

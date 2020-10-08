@@ -11,6 +11,7 @@ import { AccountComponent } from './account/account.component';
 import { EmployerProfileComponent } from './employer-profile/employer-profile.component';
 import { WorkerProfileComponent } from './worker-profile/worker-profile.component';
 import { SecurityComponent } from './security/security.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { SecurityComponent } from './security/security.component';
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    SettingsPageRoutingModule
+    SettingsPageRoutingModule,
+    SharedModule
   ],
   declarations: [
     SettingsPage,

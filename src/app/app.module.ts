@@ -20,6 +20,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, SignupComponent],
@@ -35,6 +36,7 @@ import { MaterialModule } from './material.module';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     SharedModule,
+    NgbModule,
   ],
   providers: [
     StatusBar,

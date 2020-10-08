@@ -29,11 +29,11 @@ export class WorkerProfileService {
     );
   }
 
-  updateMe({ hourlyRate, title, description }) {
+  updateMe({ hourlyRate, title, description, refSkills }) {
     this.isLoading = true;
     this.subjectMe.next({ me: this.me, isLoading: true });
 
-    this.http.put(this.serverURL + "/api/worker_profile/me", {hourlyRate, title, description}).subscribe(
+    this.http.put(this.serverURL + "/api/worker_profile/me", {hourlyRate, title, description, refSkills}).subscribe(
       (resp) => {
         this.me = resp;
         this.isLoading = false;
@@ -42,7 +42,7 @@ export class WorkerProfileService {
       },
       (err) => {
         console.log(err);
-        this.toastr.error("Server", err.error.message||err.message);
+        this.toastr.error(err.error.message||err.message, "Server");
         this.isLoading = false;
         this.subjectMe.next({ me: this.me, isLoading: false });
       }

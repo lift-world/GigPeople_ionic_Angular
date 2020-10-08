@@ -25,3 +25,16 @@ export interface Task {
   timestamp: Date;
 }
 
+export interface User {
+  _id: string;
+  createdAt: any;
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  country: string;
+  avatar: string;
+  refWorkerProfile: any;
+  refEmployerProfile: any;
+  refFinancialProfile: any;
+}

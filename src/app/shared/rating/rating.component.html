@@ -1,0 +1,11 @@
+<div style="display: flex; align-items: center;">
+  <ng-template #t let-fill="fill">
+    <span class="star" [class.full]="fill === 100">
+      <span class="half" [style.width.%]="fill">&#x02605;</span>&#x02605;
+    </span>
+  </ng-template>
+
+  <ion-badge color="warning" style="color:white; margin-right: 1rem;">{{rate}}</ion-badge>
+
+  <ngb-rating [(rate)]="rate" [starTemplate]="t" [readonly]="true" [max]="5"></ngb-rating>
+</div>

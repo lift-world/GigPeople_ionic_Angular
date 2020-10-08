@@ -1,0 +1,26 @@
+<ion-list>
+  <ion-item>
+    <ion-icon name="location-outline" slot="start"size="small"></ion-icon>
+    <ion-label>
+      <app-country-flag [code]="employer?.country"></app-country-flag>
+      <!-- {{employer?.country}}
+      <img class="flag" src="assets/images/flags/de.svg" alt="" width="50px"> -->
+    </ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-icon name="person-outline" slot="start" size="small"></ion-icon>
+    <app-rating [rate]="3.14"></app-rating>
+  </ion-item>
+  
+  <ion-item>
+    <ion-icon name="time-outline" slot="start" size="small"></ion-icon>
+    <ion-label>Member since {{employer?.createdAt.substr(0, 10)}}</ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-icon name="cash-outline" slot="start" size="small"></ion-icon>
+    <div class="verified-badge-with-title" style="width: fit-content;">Payment Verified</div>
+  </ion-item>
+
+</ion-list>

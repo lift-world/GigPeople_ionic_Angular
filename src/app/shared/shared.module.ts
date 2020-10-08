@@ -15,6 +15,9 @@ import { SkillPickerComponent } from './skill-picker/skill-picker.component';
 import { GcsUploaderComponent } from './gcs-uploader/gcs-uploader.component';
 import { ValidMarkerComponent } from './valid-marker/valid-marker.component';
 import { IonicModule } from '@ionic/angular';
+import { RatingComponent } from './rating/rating.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CountryFlagComponent } from './country-flag/country-flag.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,9 @@ import { IonicModule } from '@ionic/angular';
     SkillPickerComponent,
     SkillsPickerComponent,
     GcsUploaderComponent,
-    ValidMarkerComponent
+    ValidMarkerComponent,
+    RatingComponent,
+    CountryFlagComponent,
   ],
   imports: [
     CommonModule,
@@ -37,6 +42,7 @@ import { IonicModule } from '@ionic/angular';
     IonicModule,
     FormsModule,
     ReactiveFormsModule,
+    NgbModule,
   ],
   exports: [
     HeaderComponent,
@@ -49,7 +55,9 @@ import { IonicModule } from '@ionic/angular';
     // SkillPickerComponent,
     SkillsPickerComponent,
     GcsUploaderComponent,
-    ValidMarkerComponent
+    ValidMarkerComponent,
+    RatingComponent,
+    CountryFlagComponent,
   ],
 })
 export class SharedModule {}

@@ -29,14 +29,15 @@ export class SingleTaskPage implements OnInit {
       // if (paramMap.has('taskId')) {}
       this.taskId = paramMap.get('taskId');
       this.isLoading = true;
-      this.taskService.getOne(this.taskId).subscribe((task) => {
+
+      this.taskService.readOneWithRefs(this.taskId, ["refCreator", "refSkills"]).then((task: Task) => { 
         this.isLoading = false;
         this.task = task;
+      }).catch(err => {
+        this.isLoading = false;
+        console.log(err);
       });
 
-      this.bidService.readByTaskId(this.taskId).subscribe((bids) => {
-        this.bids = bids;
-      });
     });
   }
 

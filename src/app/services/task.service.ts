@@ -85,5 +85,9 @@ export class TaskService {
         this.subjectLoading.next(false);
       });
   }
+
+  readOneWithRefs(id: string, refs: string[]) {
+    return this.http.post<Task>(this.serverURL + "/api/task/readOneWithRefs", {id, refs}).toPromise();
+  }
 }
 

@@ -4832,6 +4832,7 @@ span.blog-item-tag {
 .task-listing:hover {
 	box-shadow: 0 2px 18px rgba(0,0,0,0.14);
 	transform: translateY(-4px);
+	text-decoration: none;
 }
 
 .task-listing-details {
