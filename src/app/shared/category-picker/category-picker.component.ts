@@ -36,9 +36,9 @@ export class CategoryPickerComponent
   ngOnDestroy() {
     this.subsLoadingData.unsubscribe();
   }
-  
+
   handleSelect(event) {
-    const value = this.categories.find((x) => x._id === event.target.value);
+    const value = event.target.value;
     this.updateValue(value);
   }
 
@@ -49,15 +49,21 @@ export class CategoryPickerComponent
   }
 
   value;
+  disabled = false;
   onChange = (_: any) => {};
+  onTouched = (_: any) => {};
 
   writeValue(obj: any): void {
     this.value = obj;
   }
   registerOnChange(fn: any): void {
-    this.onChange(this.value);
+    this.onChange = fn;
   }
-  registerOnTouched(fn: any): void {}
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
 
-  setDisabledState?(isDisabled: boolean): void {}
+  setDisabledState?(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
 }

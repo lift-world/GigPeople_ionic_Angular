@@ -43,7 +43,7 @@ export class SkillPickerComponent implements OnInit {
       if (k === -1) return;
 
       event.target.value = "";
-      this.handleSelect.emit(this.arr[k]);
+      this.handleSelect.emit(this.arr[k]._id);
     }
   }
 }

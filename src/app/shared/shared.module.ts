@@ -12,6 +12,9 @@ import { CountryPickerComponent } from './country-picker/country-picker.componen
 import { CategoryPickerComponent } from './category-picker/category-picker.component';
 import { SkillsPickerComponent } from './skills-picker/skills-picker.component';
 import { SkillPickerComponent } from './skill-picker/skill-picker.component';
+import { GcsUploaderComponent } from './gcs-uploader/gcs-uploader.component';
+import { ValidMarkerComponent } from './valid-marker/valid-marker.component';
+import { IonicModule } from '@ionic/angular';
 
 @NgModule({
   declarations: [
@@ -24,11 +27,14 @@ import { SkillPickerComponent } from './skill-picker/skill-picker.component';
     CategoryPickerComponent,
     SkillPickerComponent,
     SkillsPickerComponent,
+    GcsUploaderComponent,
+    ValidMarkerComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     MaterialModule,
+    IonicModule,
     FormsModule,
     ReactiveFormsModule,
   ],
@@ -42,6 +48,8 @@ import { SkillPickerComponent } from './skill-picker/skill-picker.component';
     CategoryPickerComponent,
     // SkillPickerComponent,
     SkillsPickerComponent,
+    GcsUploaderComponent,
+    ValidMarkerComponent
   ],
 })
 export class SharedModule {}

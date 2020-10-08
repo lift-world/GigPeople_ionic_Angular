@@ -1,20 +1,15 @@
-<div class="submit-field">
-  <h5>What skills are ? <i class="help-icon" data-tippy-placement="right"
-      title="Up to 5 skills that best describe your project"></i></h5>
-  <div class="keywords-container">
-    <div class="keyword-input-container">
-      <app-skill-picker [arr]="skills" (handleSelect)="handleSelectSkill($event)"></app-skill-picker>
-      <!-- <button class="keyword-input-button ripple-effect"><i
-                        class="icon-material-outline-add"></i></button> -->
-    </div>
-    <div class="keywords-list">
-      <span class="keyword" *ngFor="let skill of refSkills; let i = index">
-        <span class="keyword-remove" (click)="refSkills.splice(i, 1)"></span>
-        <span class="keyword-text">{{skill.title}}</span>
-      </span>
-      <!-- keywords go here -->
-    </div>
-    <div class="clearfix"></div>
+<div class="keywords-container">
+  <div class="keyword-input-container">
+    <app-skill-picker [arr]="skills" (handleSelect)="handleSelectSkill($event)"></app-skill-picker>
+    <!-- <button class="keyword-input-button ripple-effect"><i
+                      class="icon-material-outline-add"></i></button> -->
   </div>
-
+  <div class="keywords-list">
+    <span class="keyword" *ngFor="let refSkill of value; let i = index">
+      <span class="keyword-remove" (click)="value.splice(i, 1)"></span>
+      <span class="keyword-text">{{getSkillTitle(refSkill)}}</span>
+    </span>
+    <!-- keywords go here -->
+  </div>
+  <div class="clearfix"></div>
 </div>

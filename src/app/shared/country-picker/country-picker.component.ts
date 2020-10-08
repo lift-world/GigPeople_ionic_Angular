@@ -24,21 +24,33 @@ export class CountryPickerComponent implements ControlValueAccessor, OnInit {
   countries: Country[] = [];
 
   handleSelect(event) {
-    this.value = this.countries.find(x => x.code === event.target.value);
-    this.onChange(this.value);
+    const val = event.target.value;
+    this.updateValue(val);
+  }
+
+  updateValue(val) {
+    this.value = val;
+    this.onChange(val);
   }
 
   // no touch below
-  value;
+
+  value=null;
+  disabled = false;
   onChange = (_: any) => {};
+  onTouched = (_: any) => {};
 
   writeValue(obj: any): void {
     this.value = obj;
   }
   registerOnChange(fn: any): void {
-    this.onChange(this.value);
+    this.onChange = fn;
   }
-  registerOnTouched(fn: any): void {}
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
 
-  setDisabledState?(isDisabled: boolean): void {}
+  setDisabledState?(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
 }

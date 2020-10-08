@@ -16,7 +16,8 @@ import { DataService } from 'src/app/services/data.service';
     },
   ],
 })
-export class SkillsPickerComponent implements ControlValueAccessor, OnInit, OnDestroy {
+export class SkillsPickerComponent
+  implements ControlValueAccessor, OnInit, OnDestroy {
   constructor(private dataService: DataService) {}
 
   skills: Skill[] = [];
@@ -30,19 +31,22 @@ export class SkillsPickerComponent implements ControlValueAccessor, OnInit, OnDe
         }
       }
     );
+    this.updateValue([]);
   }
 
   ngOnDestroy() {
     this.subsLoadingData.unsubscribe();
   }
 
-  refSkills: Skill[] = [];
-  handleSelectSkill(skill) {
-    let k = this.refSkills.findIndex((x) => x._id === skill._id);
-    if (k > -1) return;
-    this.refSkills.push(skill);
+  handleSelectSkill(refSkill) {
+    this.value.push(refSkill);
+    this.updateValue(this.value);
+  }
 
-    this.updateValue(this.refSkills);
+  getSkillTitle(id) {
+    let skill = this.skills.find(x => x._id === id);  
+    if (skill == null) return "?";
+    else return skill.title;
   }
 
   // no touch below
@@ -52,15 +56,21 @@ export class SkillsPickerComponent implements ControlValueAccessor, OnInit, OnDe
   }
 
   value;
+  disabled = false;
   onChange = (_: any) => {};
+  onTouched = (_: any) => {};
 
   writeValue(obj: any): void {
     this.value = obj;
   }
   registerOnChange(fn: any): void {
-    this.onChange(this.value);
+    this.onChange = fn;
   }
-  registerOnTouched(fn: any): void {}
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
 
-  setDisabledState?(isDisabled: boolean): void {}
+  setDisabledState?(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
 }

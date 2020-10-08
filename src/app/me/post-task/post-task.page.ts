@@ -13,7 +13,6 @@ import { TaskService } from 'src/app/services/task.service';
 })
 export class PostTaskPage implements OnInit, AfterViewInit, OnDestroy {
   isLoading = true;
-  imagePreview: string;
 
   task: Task;
   form: FormGroup;
@@ -38,7 +37,7 @@ export class PostTaskPage implements OnInit, AfterViewInit, OnDestroy {
         validators: [Validators.required],
       }),
       filePath: new FormControl(null, {
-        validators: [Validators.required],
+        // validators: [Validators.required],
         // asyncValidators: [mimeType]
       }),
       country: new FormControl(null, {
@@ -58,6 +57,18 @@ export class PostTaskPage implements OnInit, AfterViewInit, OnDestroy {
       }),
     });
 
+    this.form.setValue({
+      refCategory: null,
+      title: "Hello world",
+      description: "Hello world app using angular",
+      filePath: null,
+      country: null,
+      minBudget: 100,
+      maxBudget: 100,
+      isHourly: false,
+      refSkills: null,
+    });
+
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has("taskId")) {
         this.mode = "edit";
@@ -66,6 +77,7 @@ export class PostTaskPage implements OnInit, AfterViewInit, OnDestroy {
         this.taskService.getOne(this.taskId).subscribe((task) => {
           this.isLoading = false;
           this.task = task;
+          console.log(task);
           this.form.setValue({
             refCategory: task.refCategory,
             title: task.title,
@@ -74,7 +86,6 @@ export class PostTaskPage implements OnInit, AfterViewInit, OnDestroy {
             country: task.country,
             minBudget: task.minBudget,
             maxBudget: task.maxBudget,
-            myfile: task.filePath,
             isHourly: task.isHourly,
             refSkills: task.refSkills
           });
@@ -90,35 +101,13 @@ export class PostTaskPage implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {}
 
-  onImagePicked(event: Event) {
-    const file = (event.target as HTMLInputElement).files[0];
-    this.form.patchValue({ myfile: file });
-    this.form.get("myfile").updateValueAndValidity();
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.imagePreview = reader.result as string;
-    };
-    reader.readAsDataURL(file);
-  }
-
   onSubmit() {
     if (this.form.invalid) return;
     this.isLoading = true;
     if (this.mode === "create") {
-      this.taskService.createOne(
-        {
-          title: this.form.value.title,
-          description: this.form.value.description,
-          refCategory: this.form.value.refCategory,
-          country: this.form.value.country,
-          minBudget: this.form.value.minBudget,
-          maxBudget: this.form.value.maxBudget,
-          refSkills: this.form.value.refSkills,
-          isHourly: this.form.value.isHourly,
-        },
-        this.form.value.myfile
-      );
+      this.taskService.createOne(this.form.value);
     } else {
+      this.taskService.updateOne({ _id: this.task._id, ...this.form.value });
     }
   }
 }

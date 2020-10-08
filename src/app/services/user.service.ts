@@ -20,6 +20,7 @@ export class UserService {
     this.subjectMe.next({ me: null, isLoading: true });
     this.http.get(this.serverURL + "/api/user/me").subscribe(
       (resp) => {
+        this.me = resp;
         this.subjectMe.next({ me: resp, isLoading: false });
       },
       (err) => {

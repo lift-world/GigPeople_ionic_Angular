@@ -1,0 +1,12 @@
+<div class="submit-field">
+  <div class="uploadButton margin-top-30">
+    <input class="uploadButton-input" type="file" accept="image/*, application/pdf" id="upload" #filePicker
+      (change)="onImagePicked($event)" />
+    <label class="uploadButton-button ripple-effect" for="upload">Upload Files</label>
+    <span class="uploadButton-file-name">Images or PDF files that might be helpful in describing
+      your project</span>
+  </div>
+  <div class="image-preview" *ngIf="imagePreview">
+    <img [src]="imagePreview" alt="">
+  </div>
+</div>
