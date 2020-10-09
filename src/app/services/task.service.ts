@@ -89,5 +89,13 @@ export class TaskService {
   readOneWithRefs(id: string, refs: string[]) {
     return this.http.post<Task>(this.serverURL + "/api/task/readOneWithRefs", {id, refs});
   }
+
+  readMyTasks() {
+    return this.http.post<Task[]>(this.serverURL + "/api/task/myTasks", null);
+  }
+
+  deleteOne(id) {
+    return this.http.post(this.serverURL + "/api/task/delete", { id });
+  }
 }
 

@@ -1,9 +1,79 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>manage-tasks</ion-title>
-  </ion-toolbar>
-</ion-header>
+<!-- Dashboard Headline -->
+<div class="dashboard-headline">
+  <h3>Manage Tasks</h3>
+</div>
 
-<ion-content>
+<!-- Row -->
+<div class="row">
 
-</ion-content>
+  <!-- Dashboard Box -->
+  <div class="col-xl-12">
+    <div class="dashboard-box margin-top-0">
+
+      <!-- Headline -->
+      <div class="headline">
+        <h3><i class="icon-material-outline-assignment"></i> My Tasks</h3>
+      </div>
+
+      <div class="content">
+        <ul class="dashboard-box-list">
+          <li *ngFor="let task of tasks; let i=index;">
+            <!-- Job Listing -->
+            <div class="job-listing width-adjustment">
+
+              <!-- Job Listing Details -->
+              <div class="job-listing-details">
+
+                <!-- Details -->
+                <div class="job-listing-description">
+                  <h3 class="job-listing-title"><a [routerLink]="'../../../tasks/single-task/'+task._id">
+                    {{task.title}}</a> 
+                    <!-- <span class="dashboard-status-button yellow">Expiring</span> -->
+                  </h3>
+
+                  <!-- Job Listing Footer -->
+                  <div class="job-listing-footer">
+                    <ul>
+                      <li><i class="icon-material-outline-access-time"></i> 23 hours left</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Task Details -->
+            <ul class="dashboard-task-info">
+              <li><strong>{{task.refBids.length}}</strong><span>Bids</span></li>
+              <li *ngIf="task.refBids.length>0"><strong>${{getAveBidBudget(task.refBids)}}</strong><span>Avg. Bid</span></li>
+              <li><strong>${{task.minBudget}} - ${{task.maxBudget}}</strong>
+                <span *ngIf="task.isHourly">Hourly Rate</span>
+                <span *ngIf="!task.isHourly">Fixed Budget</span>
+              </li>
+            </ul>
+
+            <!-- Buttons -->
+            <div class="buttons-to-right always-visible">
+              <button [routerLink]="'../../manage-bidders/'+task._id" class="button ripple-effect">
+                <i class="icon-material-outline-supervisor-account"></i> 
+                Manage Bidders <span class="button-info">{{task.refBids.length}}</span>
+              </button>
+
+              <button class="button ripple-effect ico" title="Edit" data-tippy-placement="top"
+              [routerLink]="'../../edit-task/'+task._id">
+                <i class="icon-feather-edit"></i>
+              </button>
+
+              <button (click)="onClickDelete(task, i)"
+              class="button red ripple-effect ico" title="Remove" data-tippy-placement="top">
+                <i class="icon-feather-trash-2"></i>
+              </button>
+
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- Row / End -->

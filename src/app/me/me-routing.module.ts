@@ -31,7 +31,7 @@ const routes: Routes = [
           ),
       },
       {
-        path: "manage-bidders",
+        path: "manage-bidders/:taskId",
         loadChildren: () =>
           import("./manage-bidders/manage-bidders.module").then(
             (m) => m.ManageBiddersPageModule

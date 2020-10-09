@@ -79,6 +79,8 @@ export class AuthService {
           
           this.isLoading = false;
           this.subjectLoading.next(false);
+
+          this.userService.getMe(true);
         }
       }, err => { 
         console.log(err);
@@ -109,6 +111,8 @@ export class AuthService {
     window.clearTimeout(this.tokenTimer);
     this.clearAuthData();
     this.router.navigate(['/']);
+
+    this.userService.me = null;
   }
 
   private setAuthTimer(expiresInDuration: number) {

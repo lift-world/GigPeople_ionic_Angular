@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { ManageBiddersPageRoutingModule } from './manage-bidders-routing.module';
 import { ManageBiddersPage } from './manage-bidders.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -11,6 +12,7 @@ import { ManageBiddersPage } from './manage-bidders.page';
     FormsModule,
     IonicModule,
     ManageBiddersPageRoutingModule,
+    SharedModule
   ],
   declarations: [ManageBiddersPage]
 })

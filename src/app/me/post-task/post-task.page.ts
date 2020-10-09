@@ -49,24 +49,12 @@ export class PostTaskPage implements OnInit, AfterViewInit, OnDestroy {
       maxBudget: new FormControl(null, {
         validators: [Validators.required],
       }),
-      isHourly: new FormControl(null, {
+      isHourly: new FormControl(false, {
         validators: [Validators.required],
       }),
-      refSkills: new FormControl(null, {
+      refSkills: new FormControl([], {
         validators: [Validators.required],
       }),
-    });
-
-    this.form.setValue({
-      refCategory: null,
-      title: "Hello world",
-      description: "Hello world app using angular",
-      filePath: null,
-      country: null,
-      minBudget: 100,
-      maxBudget: 100,
-      isHourly: false,
-      refSkills: null,
     });
 
     this.route.paramMap.subscribe((paramMap: ParamMap) => {

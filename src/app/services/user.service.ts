@@ -28,8 +28,8 @@ export class UserService {
     this.subjectMe.next(this.me);
   }
 
-  async getMe() {
-    if (this.me) return this.me;
+  async getMe(forced = false) {
+    if (!forced && this.me) return this.me;
     this.setLoading(true);
     try { 
       const me = await this.http.get<User>(this.serverURL + "/api/user/me").toPromise();
