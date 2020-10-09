@@ -79,7 +79,6 @@ export class AuthService {
           
           this.isLoading = false;
           this.subjectLoading.next(false);
-          this.userService.getMe();
         }
       }, err => { 
         console.log(err);
@@ -100,7 +99,6 @@ export class AuthService {
       this.isAuthenticated = true;
       this.setAuthTimer(expiresIn / 1000);
       this.authStatusListener.next(true);
-      this.userService.getMe();
     }
   }
 

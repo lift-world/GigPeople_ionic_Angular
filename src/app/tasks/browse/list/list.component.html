@@ -53,19 +53,7 @@
           <span>Hourly Rate</span>
         </div>
 
-        <span *ngIf="!userService.me" class="button button-sliding-icon ripple-effect"
-          (click)="onClickLoginToBid($event, task)">
-          Login to Bid
-          <i class="icon-material-outline-arrow-right-alt"></i>
-        </span>
-
-        <span *ngIf="userService.me && task.refCreator==userService.me._id" class="button button-sliding-icon ripple-effect"
-        (click)="onClickEdit($event, task)">
-          Edit
-          <i class="icon-material-outline-arrow-right-alt"></i>
-        </span>
-
-        <span *ngIf="userService.me && task.refCreator!=userService.me._id"
+        <span *ngIf="task.refCreator!=me?._id"
         class="button button-sliding-icon ripple-effect"
         (click)="onClickBid($event, task)">
           Bid Now 

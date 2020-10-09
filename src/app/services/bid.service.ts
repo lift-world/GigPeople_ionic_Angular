@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { environment } from "../../environments/environment"; 
+import { Bid } from '../interfaces/models';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,13 @@ export class BidService {
 
   constructor(private http: HttpClient) { }
 
-  createOne(bidData: Bid) {
-    return this.http.post<Bid>(this.serverURL + '/api/bid', { bidData });
+  createOne({taskId, budget, duration, description}) {
+    return this.http.post<Bid>(this.serverURL + "/api/bid", {
+      taskId,
+      budget,
+      duration,
+      description,
+    });
   }
 
   readByTaskId(taskId: string) {
@@ -22,14 +28,14 @@ export class BidService {
   deleteOne(id: string) {
     return this.http.post(this.serverURL + '/api/bid/deleteOne', { id });
   }
-}
 
-export interface Bid {
-  _id: string;
-  refTask: string;
-  refBidder: string;
-  description: string;
-  budget: number;
-  duration: number;
-  timestamp: Date;
+  readMyActiveBids() {
+    return this.http.get<Bid[]>(this.serverURL + '/api/bid/myActiveBids');
+  }
+
+  updateOne({id, budget, duration, description}) {
+    return this.http.put<Bid>(this.serverURL + '/api/bid', {
+      id, budget, duration, description
+    });    
+  }
 }

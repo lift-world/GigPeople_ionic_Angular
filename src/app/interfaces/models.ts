@@ -22,7 +22,7 @@ export interface Task {
   isHourly: boolean;
   refBids: any[];
   status: number;
-  timestamp: Date;
+  timestamp: string;
 }
 
 export interface User {
@@ -37,4 +37,14 @@ export interface User {
   refWorkerProfile: any;
   refEmployerProfile: any;
   refFinancialProfile: any;
+}
+
+export interface Bid {
+  _id: any;
+  refTask: any;
+  refBidder: any;
+  description: string;
+  budget: number;
+  duration: number;
+  timestamp: string;
 }

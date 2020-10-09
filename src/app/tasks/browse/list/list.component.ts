@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Task } from 'src/app/interfaces/models';
+import { Task, User } from 'src/app/interfaces/models';
 import { TaskService } from 'src/app/services/task.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -21,7 +21,10 @@ export class ListComponent implements OnInit, OnDestroy {
   subsLoading: Subscription;
   tasks: Task[];
   subsTasks: Subscription;
-  ngOnInit(): void {
+
+  me: User = null;
+
+  async ngOnInit() {
     this.isLoading = this.taskService.isLoading;
     this.subsLoading = this.taskService.subjectLoading.subscribe(
       (isLoading) => {
@@ -35,6 +38,8 @@ export class ListComponent implements OnInit, OnDestroy {
         this.tasks = tasks;
       }
     );
+
+    this.me = await this.userService.getMe();
   }
 
   ngOnDestroy() {
@@ -55,8 +60,8 @@ export class ListComponent implements OnInit, OnDestroy {
   }
 
   onClickBid(event, task: Task) {
-    event.stopPropagation();
-    return false;
+    // event.stopPropagation();
+    // return false;
   }
 
 }

@@ -56,9 +56,20 @@
       </div>
       <div class="clearfix"></div>
 
-      <div>
-        <app-place-bid></app-place-bid>
+      <div *ngIf="!isMyProject(me, task)">
+
+        <app-place-bid *ngIf="!alreadyBid(me, task)"
+          [minBudget]="task?.minBudget" (handleSubmit)="handleSubmitBid($event)">
+        </app-place-bid>
+
+        <div *ngIf="alreadyBid(me, task)" class="countdown green margin-bottom-35">
+          You already placed bid.
+          <button routerLink="../../../../me/my-active-bids" style="margin-left: 50px;">
+            <span class="icon-feather-edit"></span>
+          </button>
+        </div>
       </div>
+      
 
     </div>
 
@@ -84,7 +95,7 @@
         <!-- Freelancers Bidding -->
         <div class="boxed-list margin-bottom-60">
           <div class="boxed-list-headline">
-            <h3><i class="icon-material-outline-group"></i> Freelancers Bidding</h3>
+            <h3><i class="icon-material-outline-group"></i>{{task.refBids.length}} bid(s) placed</h3>
           </div>
         </div>
 

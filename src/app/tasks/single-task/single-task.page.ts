@@ -1,10 +1,11 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Task } from 'src/app/interfaces/models';
-import { Bid, BidService } from 'src/app/services/bid.service';
+import { Task, User } from 'src/app/interfaces/models';
+import { BidService } from 'src/app/services/bid.service';
 
 import { TaskService } from 'src/app/services/task.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-single-task',
@@ -15,22 +16,24 @@ export class SingleTaskPage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private taskService: TaskService,
-    private bidService: BidService
+    private bidService: BidService,
+    private userService: UserService
   ) { }
 
+  me: User;
   isLoading: boolean = true;
   taskId: string;
   task: Task;
-  bids: Bid[];
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    this.me = await this.userService.getMe();
 
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       // if (paramMap.has('taskId')) {}
       this.taskId = paramMap.get('taskId');
       this.isLoading = true;
 
-      this.taskService.readOneWithRefs(this.taskId, ["refCreator", "refSkills"]).then((task: Task) => { 
+      this.taskService.readOneWithRefs(this.taskId, ["refCreator", "refSkills", "refBids"]).toPromise().then((task: Task) => { 
         this.isLoading = false;
         this.task = task;
       }).catch(err => {
@@ -41,28 +44,21 @@ export class SingleTaskPage implements OnInit {
     });
   }
 
-
-
-  onClickCreateBid() {
-    // this.bidService.createOne({
-    //   _id: null,
-    //   bidderId: null,
-    //   taskId: this.taskId,
-    //   description: "hellos was12234131fytds",
-    //   budget: 3000,
-    //   duration: 30
-    // }).subscribe(bid => {
-    //   this.bids = [bid, ...this.bids];
-    // });
+  isMyProject(me:User, task:Task) {
+    return me?._id === task?.refCreator?._id;
   }
 
-  handlerDelete(bid: Bid) {
-    this.bidService.deleteOne(bid._id).subscribe(resp => {
-      console.log(resp);
-      let k = this.bids.findIndex((bb) => bid._id === bb._id);
-      if (k > -1) {
-        this.bids.splice(k, 1);
-      }
-    });
+  alreadyBid(me:User, task:Task) {
+    let k = task.refBids.findIndex(x => x.refBidder === me._id);
+    return k > -1;
+  }
+
+  handleSubmitBid({ budget, duration, description }) {
+    const taskId = this.taskId;
+    this.bidService
+      .createOne({ taskId, budget, duration, description })
+      .subscribe((bid) => {
+        this.task.refBids.unshift(bid);
+      });
   }
 }

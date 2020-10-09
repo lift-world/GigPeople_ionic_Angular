@@ -15,48 +15,54 @@ export class AccountComponent implements OnInit, AfterViewInit {
   constructor(private userService: UserService) {}
 
   me;
-  isLoading = true;
-  subsMe: Subscription;
   userForm: FormGroup;
-
+  isLoading: boolean;
   ngOnInit() {
     this.arrCountry = countryList.getData();
+    this.initForm();
+    this.doInit();
+  }
 
-    if (this.userService.me === null) this.userService.getMe();
-    else this.me = this.userService.me;
-
-    this.initUserForm(this.me);
-    this.subsMe = this.userService.subjectMe.subscribe(({ me, isLoading }) => {
-      this.isLoading = isLoading;
-      this.me = me;
-      this.initUserForm(this.me);
-    });
+  async doInit() { 
+    this.isLoading = true;
+    this.me = await this.userService.getMe();
+    this.updateForm(this.me);
+    this.isLoading = false;
   }
 
   ngAfterViewInit() {}
 
-  ngOnDestroy() {
-    this.subsMe.unsubscribe();
-  }
+  ngOnDestroy() {}
 
-  initUserForm(me) {
-    this.imagePreview = me?.avatar;
+  initForm() { 
     this.userForm = new FormGroup({
-      country: new FormControl(me?.country, {
+      country: new FormControl(null, {
         validators: [Validators.required],
       }),
-      email: new FormControl(me?.email, {
+      email: new FormControl(null, {
         validators: [Validators.required],
       }),
-      firstName: new FormControl(me?.firstName, {
+      firstName: new FormControl(null, {
         validators: [Validators.required],
       }),
-      lastName: new FormControl(me?.lastName, {
+      lastName: new FormControl(null, {
         validators: [Validators.required],
       }),
       avatarFile: new FormControl(null, {
         // validators: [Validators.required],
       }),
+    });
+  }
+
+  updateForm(me) {
+    if (!me) return;
+    this.imagePreview = me.avatar;
+    this.userForm.setValue({
+      country: me.country,
+      email: me.email,
+      firstName: me.firstName,
+      lastName: me.lastName,
+      avatarFile: null,
     });
   }
 

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth/auth.guard';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 
@@ -7,7 +8,7 @@ const routes: Routes = [
   {
     path: "",
     pathMatch: "full",
-    redirectTo: "home"
+    redirectTo: "home",
   },
   {
     path: "home",
@@ -25,10 +26,13 @@ const routes: Routes = [
   {
     path: "me",
     loadChildren: () => import("./me/me.module").then((m) => m.MePageModule),
+    canActivate: [AuthGuard],
   },
   {
-    path: 'tasks',
-    loadChildren: () => import('./tasks/tasks.module').then( m => m.TasksPageModule)
+    path: "tasks",
+    loadChildren: () =>
+      import("./tasks/tasks.module").then((m) => m.TasksPageModule),
+    canActivate: [AuthGuard],
   },
 ];
 

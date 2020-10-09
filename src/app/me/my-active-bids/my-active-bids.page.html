@@ -1,9 +1,69 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>my-active-bids</ion-title>
-  </ion-toolbar>
-</ion-header>
+<!-- Dashboard Headline -->
+<div class="dashboard-headline">
+  <h3>My Active Bids</h3>
+</div>
 
-<ion-content>
+<!-- Row -->
+<div class="row">
 
-</ion-content>
+  <!-- Dashboard Box -->
+  <div class="col-xl-12">
+    <div class="dashboard-box margin-top-0">
+
+      <!-- Headline -->
+      <div class="headline">
+        <h3><i class="icon-material-outline-gavel"></i> Bids List</h3>
+      </div>
+
+      <div class="content">
+        <ul class="dashboard-box-list">
+          <li *ngFor="let bid of bids; let i=index;">
+            <!-- Job Listing -->
+            <div class="job-listing width-adjustment">
+
+              <!-- Job Listing Details -->
+              <div class="job-listing-details">
+
+                <!-- Details -->
+                <div class="job-listing-description">
+                  <h3 class="job-listing-title"><a [routerLink]="'../../../tasks/single-task/'+bid.refTask?._id">
+                    {{bid.refTask?.title}}
+                  </a></h3>
+                </div>
+              </div>
+            </div>
+
+            <!-- Task Details -->
+            <ul class="dashboard-task-info">
+              <li>
+                <strong>${{bid.budget}}</strong>
+                <span *ngIf="bid.refTask.isHourly">Hourly Rate</span>
+                <span *ngIf="!bid.refTask.isHourly">Fixed budget</span>
+              </li>
+              <li>
+                <strong>{{bid.duration}} Days</strong>
+                <span>Delivery Time</span>
+              </li>
+            </ul>
+
+            <!-- Buttons -->
+            <div class="buttons-to-right always-visible">
+              <button class="button ico" title="Edit Bid"
+                (click)="onClickEdit(bid, i)"
+              >
+                <i class="icon-feather-edit"></i>
+              </button>
+              <button class="button red ico" title="Cancel Bid"
+              (click)="onClickDelete(bid, i)">
+                <i class="icon-feather-trash-2"></i></button>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- Row / End -->
+

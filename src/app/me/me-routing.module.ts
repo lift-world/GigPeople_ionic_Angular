@@ -7,7 +7,6 @@ const routes: Routes = [
   {
     path: "",
     component: MePage,
-    canActivate: [AuthGuard],
     children: [
       { path: "", pathMatch: "full", redirectTo: "dashboard" },
       {
@@ -62,12 +61,10 @@ const routes: Routes = [
       {
         path: 'post-task',
         loadChildren: () => import('./post-task/post-task.module').then(m => m.PostTaskPageModule),
-        canActivate: [AuthGuard]
       },
       {
         path: 'edit-task/:taskId',
-        loadChildren: () => import('./post-task/post-task.module').then(m => m.PostTaskPageModule),
-        canActivate: [AuthGuard]
+        loadChildren: () => import('./post-task/post-task.module').then(m => m.PostTaskPageModule),        
       },
       {
         path: "reviews",

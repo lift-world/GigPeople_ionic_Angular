@@ -87,7 +87,7 @@ export class TaskService {
   }
 
   readOneWithRefs(id: string, refs: string[]) {
-    return this.http.post<Task>(this.serverURL + "/api/task/readOneWithRefs", {id, refs}).toPromise();
+    return this.http.post<Task>(this.serverURL + "/api/task/readOneWithRefs", {id, refs});
   }
 }
 

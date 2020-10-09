@@ -18,6 +18,7 @@ import { IonicModule } from '@ionic/angular';
 import { RatingComponent } from './rating/rating.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CountryFlagComponent } from './country-flag/country-flag.component';
+import { UpdateBidComponent } from './update-bid/update-bid.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { CountryFlagComponent } from './country-flag/country-flag.component';
     ValidMarkerComponent,
     RatingComponent,
     CountryFlagComponent,
+    UpdateBidComponent
   ],
   imports: [
     CommonModule,
@@ -58,6 +60,7 @@ import { CountryFlagComponent } from './country-flag/country-flag.component';
     ValidMarkerComponent,
     RatingComponent,
     CountryFlagComponent,
+    UpdateBidComponent
   ],
 })
 export class SharedModule {}

@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { AuthService } from '../../auth/auth.service';
 import { Subscription } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/interfaces/models';
 
 @Component({
   selector: "app-header",
@@ -12,9 +13,10 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   userIsAuthenticated = false;
   private subsAuth: Subscription;
 
-  me = null;
-  private isLoadingMe = false;
+  me:User = null;
   private subsMe: Subscription;
+  isLoading = false;
+  private subsLoading: Subscription;
 
   constructor(
     private authService: AuthService,
@@ -23,22 +25,25 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {}
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.userIsAuthenticated = this.authService.getIsAuth();
+    this.getMe();
+    
     this.subsAuth = this.authService
       .getAuthStatusListener()
       .subscribe((isAuthenticated) => {
         this.userIsAuthenticated = isAuthenticated;
+        this.getMe();
       });
+    
+    this.subsMe = this.userService.subjectMe.subscribe(me => {
+      this.me = me;
+    });
+  }
 
-    this.me = this.userService.me;
-    this.isLoadingMe = this.userService.isLoading;
-    this.subsMe = this.userService.subjectMe.subscribe(
-      (data: { me: any; isLoading: boolean }) => {
-        this.isLoadingMe = data.isLoading;
-        this.me = data.me;
-      }
-    );
+  async getMe() { 
+    if (this.userIsAuthenticated) this.me = await this.userService.getMe();
+    else this.me = null;
   }
 
   ngOnDestroy(): void {

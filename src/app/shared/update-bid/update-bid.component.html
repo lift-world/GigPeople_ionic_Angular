@@ -3,8 +3,8 @@
     <h3>Bid on this job!</h3>
   </div>
   <div class="bidding-inner">
-    <div style="display: flex;">
-      <div style="flex:1; margin: 0 20px;">
+    <div class="row">
+      <div class="col-xs-6">
         <!-- Headline -->
         <span class="bidding-detail">Set your <strong>minimal rate</strong></span>
         <div class="input-with-icon">
@@ -12,7 +12,7 @@
           <i class="currency">USD</i>
         </div>
       </div>
-      <div style="flex:1; margin: 0 20px;">
+      <div class="col-xs-6">
         <!-- Headline -->
         <span class="bidding-detail">Set your <strong>delivery time</strong></span>
         <!-- Fields -->
@@ -24,12 +24,12 @@
       </div>
     </div>
 
-    <ion-textarea rows="10" style="background-color: white;" formControlName="description"> 
+    <ion-textarea rows="10" style="background-color: white;" formControlName="description">
     </ion-textarea>
 
     <!-- Button -->
     <button class="button ripple-effect move-on-hover full-width margin-top-30" type="submit">
-      <span>Place a Bid</span>
+      <span>Submit</span>
     </button>
   </div>
   <div class="bidding-signup">Don't have an account? <a [routerLink]="'../../../../signup'"
