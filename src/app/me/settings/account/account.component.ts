@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { UserService } from 'src/app/services/user.service';
-import { Country } from 'src/app/interfaces/Country';
+import { UserService } from 'src/app/1/services/user.service';
+import { Country } from 'src/app/1/models/Country';
 import * as countryList from "country-list";
 
 @Component({

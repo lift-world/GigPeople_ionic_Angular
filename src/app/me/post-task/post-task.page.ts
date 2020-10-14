@@ -2,9 +2,9 @@ import { Component, OnInit, AfterViewInit, ViewChild, OnDestroy } from '@angular
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { ActivatedRoute, ParamMap } from "@angular/router";
 import { Subscription } from "rxjs";
-import { Category, Skill, Task } from 'src/app/interfaces/models';
+import { Category, Skill, Task } from 'src/app/1/models/models';
 
-import { TaskService } from 'src/app/services/task.service';
+import { TaskService } from 'src/app/1/services/task.service';
 
 @Component({
   selector: "app-post-task",

@@ -1,11 +1,11 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Task, User } from 'src/app/interfaces/models';
-import { BidService } from 'src/app/services/bid.service';
+import { Task, User } from 'src/app/1/models/models';
+import { BidService } from 'src/app/1/services/bid.service';
 
-import { TaskService } from 'src/app/services/task.service';
-import { UserService } from 'src/app/services/user.service';
+import { TaskService } from 'src/app/1/services/task.service';
+import { UserService } from 'src/app/1/services/user.service';
 
 @Component({
   selector: 'app-single-task',

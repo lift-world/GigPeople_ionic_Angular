@@ -6,7 +6,7 @@ import { IonicModule } from '@ionic/angular';
 import { EmployerPageRoutingModule } from './employer-routing.module';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MaterialModule } from 'src/app/material.module';
+import { MaterialModule } from 'src/app/1/material.module';
 
 import { EmployerPage } from './employer.page';
 import { List0Component } from './list0/list0.component';

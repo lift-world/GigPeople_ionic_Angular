@@ -13,8 +13,7 @@ export class EmployerPage implements OnInit {
     {title: "Past Tasks", url:'past-tasks'},
   ];
 
-  constructor(public route: ActivatedRoute, public router: Router) {
-  }
+  constructor(public route: ActivatedRoute, public router: Router) {}
   ngOnInit() {}
 
 }

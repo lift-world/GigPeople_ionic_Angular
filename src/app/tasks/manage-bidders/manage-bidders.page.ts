@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Task } from 'src/app/interfaces/models';
-import { TaskService } from 'src/app/services/task.service';
+import { Task } from 'src/app/1/models/models';
+import { TaskService } from 'src/app/1/services/task.service';
 
 @Component({
   selector: "app-manage-bidders",

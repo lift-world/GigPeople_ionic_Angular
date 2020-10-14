@@ -7,8 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { PostTaskPageRoutingModule } from './post-task-routing.module';
 
 import { PostTaskPage } from './post-task.page';
-import { MaterialModule } from 'src/app/material.module';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { MaterialModule } from 'src/app/1/material.module';
+import { SharedModule } from 'src/app/1/shared/shared.module';
 
 @NgModule({
   imports: [

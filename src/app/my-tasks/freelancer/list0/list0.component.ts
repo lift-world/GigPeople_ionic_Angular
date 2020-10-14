@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Bid } from 'src/app/interfaces/models';
-import { BidService } from 'src/app/services/bid.service';
-import { UpdateBidComponent } from 'src/app/shared/update-bid/update-bid.component';
+import { Bid } from 'src/app/1/models/models';
+import { BidService } from 'src/app/1/services/bid.service';
+import { UpdateBidComponent } from 'src/app/1/shared/update-bid/update-bid.component';
 
 @Component({
   selector: 'app-list0',

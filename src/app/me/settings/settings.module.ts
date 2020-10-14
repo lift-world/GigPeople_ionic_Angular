@@ -11,7 +11,7 @@ import { AccountComponent } from './account/account.component';
 import { EmployerProfileComponent } from './employer-profile/employer-profile.component';
 import { WorkerProfileComponent } from './worker-profile/worker-profile.component';
 import { SecurityComponent } from './security/security.component';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from 'src/app/1/shared/shared.module';
 
 @NgModule({
   imports: [

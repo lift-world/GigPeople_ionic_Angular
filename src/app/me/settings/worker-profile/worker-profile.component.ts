@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { WorkerProfileService } from 'src/app/services/worker-profile.service';
+import { WorkerProfileService } from 'src/app/1/services/worker-profile.service';
 
 @Component({
   selector: 'app-worker-profile',

@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Task, User } from 'src/app/interfaces/models';
-import { TaskService } from 'src/app/services/task.service';
-import { UserService } from 'src/app/services/user.service';
+import { Task, User } from 'src/app/1/models/models';
+import { TaskService } from 'src/app/1/services/task.service';
+import { UserService } from 'src/app/1/services/user.service';
 
 @Component({
   selector: "app-list",
