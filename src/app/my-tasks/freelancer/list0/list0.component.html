@@ -1,0 +1,32 @@
+<mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+<div *ngIf="!isLoading">
+  <mat-card>
+    <table class="table" style="margin-top: 3rem;">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Task Title</th>
+          <th scope="col">Total Bids</th>
+          <th scope="col">Avg Bid</th>
+          <th scope="col">My Bid</th>
+          <th scope="col">Bid Placed</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bid of bids; let i=index;">
+          <th scope="row">{{i+1}}</th>
+          <td>
+            <a [routerLink]="'/tasks/single-task/'+bid.refTask?._id">{{bid.refTask?.title}}</a>
+          </td>
+          <td>{{bid.refTask?.refBids.length}}</td>
+          <td></td>
+          <td>{{bid.budget}} USD {{bid.refTask?.isHourly?'/hour':''}}</td>
+          <td>{{bid.timestamp}}</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </mat-card>
+</div>
+<!-- Row / End -->

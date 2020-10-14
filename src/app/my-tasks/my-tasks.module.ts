@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
 import { IonicModule } from '@ionic/angular';
-import { MyActiveBidsPageRoutingModule } from './my-active-bids-routing.module';
-import { MyActiveBidsPage } from './my-active-bids.page';
+
+import { MyTasksPageRoutingModule } from './my-tasks-routing.module';
+
+import { MyTasksPage } from './my-tasks.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MyActiveBidsPageRoutingModule,
+    MyTasksPageRoutingModule
   ],
-  declarations: [MyActiveBidsPage]
+  declarations: [MyTasksPage]
 })
-export class MyActiveBidsPageModule {}
+export class MyTasksPageModule {}

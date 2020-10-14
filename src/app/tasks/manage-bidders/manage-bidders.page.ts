@@ -25,7 +25,18 @@ export class ManageBiddersPage implements OnInit {
     this.task = await this.taskService.readOneWithRefs(taskId, [
       "refBids_refBidder",
     ]).toPromise();
-    
-    console.log(this.task);
+  }
+
+  toggleOverflowBid(ddd) { 
+    if (ddd.style.height !== "fit-content") {    
+      ddd.style.height = 'fit-content';
+    } else {
+      ddd.style.height = '150px';
+    }
+  }
+
+  async onClickAcceptOffer(bidderId) {
+    const taskId = this.task._id;
+    await this.taskService.hire(taskId, bidderId);
   }
 }

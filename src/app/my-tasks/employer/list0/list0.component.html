@@ -1,0 +1,47 @@
+<mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+
+<div *ngIf="!isLoading">
+  <mat-card>   
+    <table class="table" style="margin-top: 3rem;">
+      <thead>
+        <tr>
+          <th scope="col">No</th>
+          <th scope="col">Task Title</th>
+          <th scope="col">Bids</th>
+          <th scope="col">Avg Bid</th>
+          <th scope="col">Bid End Date</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of tasks; let i=index;">
+          <th scope="row">{{i+1}}</th>
+          <td>
+            <a [routerLink]="'/tasks/single-task/'+task._id">{{task.title}}</a>
+          </td>
+          <td><a [routerLink]="'/tasks/manage-bidders/'+task._id">{{task.refBids.length}}</a></td>
+          <td><a [routerLink]="'/tasks/manage-bidders/'+task._id">{{getAveBidBudget(task.refBids)}} USD
+              {{task.isHourly?'/hour':''}}</a></td>
+          <td></td>
+          <td>
+            <div ngbDropdown class="d-inline-block">
+              <button  ngbDropdownToggle>Edit</button>
+              <div ngbDropdownMenu>
+                <button ngbDropdownItem [routerLink]="'/me/edit-task/'+task._id">
+                  Edit
+                </button>
+                <button ngbDropdownItem (click)="onClickDelete(task, i)">
+                  Delete
+                </button>
+              </div>
+            </div>
+
+           
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </mat-card>
+
+</div>

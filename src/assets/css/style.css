@@ -15336,11 +15336,11 @@ ul.dashboard-box-list > li:hover {
     flex-direction: row;
     align-items: stretch;
     align-self: flex-end;
-    position: absolute;
+    /* position: absolute;
     right: 30px;
     top: 50%;
     transform: translateY(-50%);
-    transition: 0.3s;
+    transition: 0.3s; */
     justify-content: center;
 }
 

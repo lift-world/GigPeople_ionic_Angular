@@ -31,31 +31,10 @@ const routes: Routes = [
           ),
       },
       {
-        path: "manage-bidders/:taskId",
-        loadChildren: () =>
-          import("./manage-bidders/manage-bidders.module").then(
-            (m) => m.ManageBiddersPageModule
-          ),
-      },
-      {
-        path: "manage-tasks",
-        loadChildren: () =>
-          import("./manage-tasks/manage-tasks.module").then(
-            (m) => m.ManageTasksPageModule
-          ),
-      },
-      {
         path: "messages",
         loadChildren: () =>
           import("./messages/messages.module").then(
             (m) => m.MessagesPageModule
-          ),
-      },
-      {
-        path: "my-active-bids",
-        loadChildren: () =>
-          import("./my-active-bids/my-active-bids.module").then(
-            (m) => m.MyActiveBidsPageModule
           ),
       },
       {

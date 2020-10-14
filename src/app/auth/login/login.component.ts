@@ -55,7 +55,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     if (this.isOK && this.form.valid) {
-      console.log(this.form.value);
       this.authService.login(this.form.value.email, this.form.value.password);
     }
   }

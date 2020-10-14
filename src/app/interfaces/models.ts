@@ -23,6 +23,7 @@ export interface Task {
   refBids: any[];
   status: number;
   timestamp: string;
+  refContract: any;
 }
 
 export interface User {

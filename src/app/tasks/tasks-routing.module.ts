@@ -15,7 +15,14 @@ const routes: Routes = [
   {
     path: 'single-task/:taskId',
     loadChildren: () => import('./single-task/single-task.module').then( m => m.SingleTaskPageModule)
-  }
+  },
+  {
+    path: "manage-bidders/:taskId",
+    loadChildren: () =>
+      import("./manage-bidders/manage-bidders.module").then(
+        (m) => m.ManageBiddersPageModule
+      ),
+  },
 ];
 
 @NgModule({

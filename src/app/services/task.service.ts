@@ -31,8 +31,8 @@ export class TaskService {
         this.subjectTasks.next(this.tasks);
         this.isLoading = false;
         this.subjectLoading.next(false);
-        this.toastr.success("Completed successfully!", "Task");
-        this.router.navigate(["/me/manage-tasks"]);
+        this.toastr.success("Posted successfully!", "Task");
+        this.router.navigate(["/my-tasks/employer/open-tasks"]);
       },
       (err) => {
         console.log(err);
@@ -56,12 +56,13 @@ export class TaskService {
         this.isLoading = false;
         this.subjectLoading.next(false);
 
-        this.toastr.success("Completed successfully!", "Task");
-        // this.router.navigate(['/me/manage-tasks']);
+        this.toastr.success("Updated successfully!", "Task");
+        this.router.navigate(["/my-tasks/employer/open-tasks"]);
+
       },
       (err) => {
         console.log(err);
-        this.toastr.error("Server", err.error.message || err.message);
+        this.toastr.error(err.error.message || err.message, "Server");
         this.isLoading = false;
         this.subjectLoading.next(false);
       }
@@ -90,12 +91,26 @@ export class TaskService {
     return this.http.post<Task>(this.serverURL + "/api/task/readOneWithRefs", {id, refs});
   }
 
-  readMyTasks() {
-    return this.http.post<Task[]>(this.serverURL + "/api/task/myTasks", null);
+  readMyTasks(status) {
+    return this.http.post<Task[]>(this.serverURL + "/api/task/readMyTasks", {status});
   }
 
   deleteOne(id) {
     return this.http.post(this.serverURL + "/api/task/delete", { id });
+  }
+
+  async hire(taskId, bidderId) {
+    return new Promise(async(resolve, reject) => { 
+      try {
+        let result = await this.http.post(this.serverURL + "/api/task/hire", { taskId, bidderId }).toPromise();
+
+        
+        resolve();
+      } catch (err) {
+        console.log(err);
+        this.toastr.error(err.error.message || err.message, "Server");
+      }
+    });
   }
 }
 

@@ -30,25 +30,15 @@
                 <i class="icon-material-outline-assignment"></i>Browse Tasks
               </a>
             </li>
-            <!-- <li *ngIf="userIsAuthenticated"><a [routerLink]="['/post-task']" class="">
-              <i class="icon-material-outline-add"></i>New Task</a></li>
 
-            <li *ngIf="userIsAuthenticated"><a href="#">soon</a>
-              <ul class="dropdown-nav">
-
-                <li *ngIf="userIsAuthenticated"><a [routerLink]="['/mytasks']" class=""><i class="icon-material-outline-assignment"></i>My Tasks</a></li>
-
-                <li *ngIf="userIsAuthenticated"><a [routerLink]="['/manage-bidders']" class=""><i class="icon-feather-users
-                "></i>Manage Bidders</a></li>
-
-              </ul>
-            </li> -->
+            <li *ngIf="userIsAuthenticated">
+              <a [routerLink]="['/my-tasks']" routerLinkActive="router-link-active">
+                <i class="icon-material-outline-assignment"></i>My Tasks
+              </a>
+            </li>
 
             <li><a [routerLink]="['/home/about']" routerLinkActive="router-link-active"><i class="icon-material-outline-group
             "></i> About Us</a></li>
-
-            <!-- <li><a [routerLink]="['/becomeSeller']" class=""><i class="icon-material-outline-local-atm
-            "></i> Become a Seller</a></li> -->
 
             <li><a [routerLink]="['/home/help']" routerLinkActive="router-link-active"><i class="icon-material-outline-help-outline"></i>
                 Help & Support</a></li>

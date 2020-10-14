@@ -1,0 +1,7 @@
+<ul ngbNav class="nav-tabs" [activeId]="router.url.split('/').pop()">
+  <li [ngbNavItem]="link.url" *ngFor="let link of links">
+    <a ngbNavLink [routerLink]="link.url">{{ link.title }}</a>
+  </li>
+</ul>
+
+<router-outlet></router-outlet>

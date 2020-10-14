@@ -3,20 +3,22 @@ import { Bid, Task } from 'src/app/interfaces/models';
 import { TaskService } from 'src/app/services/task.service';
 
 @Component({
-  selector: "app-manage-tasks",
-  templateUrl: "./manage-tasks.page.html",
-  styleUrls: ["./manage-tasks.page.scss"],
+  selector: 'app-list0',
+  templateUrl: './list0.component.html',
+  styleUrls: ['./list0.component.scss'],
 })
-export class ManageTasksPage implements OnInit {
+export class List0Component implements OnInit {
   constructor(private taskService: TaskService) {}
-
+  isLoading = true;
   ngOnInit() {
     this.readMyTasks();
   }
 
   tasks: Task[] = [];
   async readMyTasks() {
-    this.tasks = await this.taskService.readMyTasks().toPromise();
+    this.isLoading = true;
+    this.tasks = await this.taskService.readMyTasks(0).toPromise();
+    this.isLoading = false;
   }
 
   getAveBidBudget(bids: Bid[]) {

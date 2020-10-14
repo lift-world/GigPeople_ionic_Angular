@@ -1,0 +1,22 @@
+<!-- Spacer -->
+<div class="margin-top-90"></div>
+<!-- Spacer / End-->
+
+<!-- Page Content
+================================================== -->
+<div class="container">
+  <div class="row" style="display:flex;">
+    <div style="flex:1; padding: 2rem;">
+      <h1>My Tasks</h1>
+    </div>
+    <ion-button [color]="currentUrl=='employer'?'dark':'light'" [routerLink]="'employer'"
+      (click)="currentUrl='employer'">Employer</ion-button>
+    <ion-button [color]="currentUrl!='employer'?'dark':'light'" [routerLink]="'freelancer'"
+      (click)="currentUrl='freelancer'">Freelancer</ion-button>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

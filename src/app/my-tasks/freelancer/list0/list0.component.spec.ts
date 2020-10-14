@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { ManageTasksPage } from './manage-tasks.page';
+import { List0Component } from './list0.component';
 
-describe('ManageTasksPage', () => {
-  let component: ManageTasksPage;
-  let fixture: ComponentFixture<ManageTasksPage>;
+describe('List0Component', () => {
+  let component: List0Component;
+  let fixture: ComponentFixture<List0Component>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ManageTasksPage ],
+      declarations: [ List0Component ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ManageTasksPage);
+    fixture = TestBed.createComponent(List0Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

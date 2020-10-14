@@ -5,20 +5,23 @@ import { BidService } from 'src/app/services/bid.service';
 import { UpdateBidComponent } from 'src/app/shared/update-bid/update-bid.component';
 
 @Component({
-  selector: "app-my-active-bids",
-  templateUrl: "./my-active-bids.page.html",
-  styleUrls: ["./my-active-bids.page.scss"],
+  selector: 'app-list0',
+  templateUrl: './list0.component.html',
+  styleUrls: ['./list0.component.scss'],
 })
-export class MyActiveBidsPage implements OnInit {
+export class List0Component implements OnInit {
   constructor(private bidService: BidService, public dialog: MatDialog) {}
 
   ngOnInit() {
     this.getBids();
   }
 
+  isLoading = true;
   bids: Bid[] = [];
   async getBids() {
+    this.isLoading = true;
     this.bids = await this.bidService.readMyActiveBids().toPromise();
+    this.isLoading = false;
   }
 
   onClickEdit(bid: Bid, i) {
@@ -46,4 +49,5 @@ export class MyActiveBidsPage implements OnInit {
 
     return false;
   }
+
 }

@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { MyActiveBidsPage } from './my-active-bids.page';
+import { List0Component } from './list0.component';
 
-describe('MyActiveBidsPage', () => {
-  let component: MyActiveBidsPage;
-  let fixture: ComponentFixture<MyActiveBidsPage>;
+describe('List0Component', () => {
+  let component: List0Component;
+  let fixture: ComponentFixture<List0Component>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MyActiveBidsPage ],
+      declarations: [ List0Component ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(MyActiveBidsPage);
+    fixture = TestBed.createComponent(List0Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
