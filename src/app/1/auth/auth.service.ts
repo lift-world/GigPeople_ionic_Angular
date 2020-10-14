@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { environment } from "src/environments/environment";
 import { AuthData } from 'src/app/1/auth/auth-data.model';
 import { ToastrService } from 'ngx-toastr';
-import { UserService } from '../services/user.service';
+import { UserService } from 'src/app/1/services/user.service';
 
 @Injectable({
   providedIn: 'root',

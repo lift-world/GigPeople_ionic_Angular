@@ -1,3 +1,6 @@
+<mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+
+<div class="margin-top-50"></div>
 <!-- Page Content
 ================================================== -->
 <div *ngIf="!isLoading" class="container">
@@ -37,7 +40,7 @@
 
         <div *ngIf="alreadyBid(me, task)" class="countdown green margin-bottom-35">
           You already placed bid.
-          <button routerLink="../../../../me/my-active-bids" style="margin-left: 50px;">
+          <button routerLink="/me/my-active-bids" style="margin-left: 50px;">
             <span class="icon-feather-edit"></span>
           </button>
         </div>

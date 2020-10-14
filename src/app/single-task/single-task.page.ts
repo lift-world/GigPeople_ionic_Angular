@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Task, User } from 'src/app/1/models/models';
 import { BidService } from 'src/app/1/services/bid.service';
 
@@ -13,7 +13,15 @@ import { UserService } from 'src/app/1/services/user.service';
   styleUrls: ['./single-task.page.scss'],
 })
 export class SingleTaskPage implements OnInit {
+  links = [
+    {title: "Details", url:'details'},
+    {title: "Bids", url:'bids'},
+    {title: "Contract", url:'contract'},
+    {title: "Review", url:'review'},
+  ];
+
   constructor(
+    public router: Router,
     private route: ActivatedRoute,
     private taskService: TaskService,
     private bidService: BidService,

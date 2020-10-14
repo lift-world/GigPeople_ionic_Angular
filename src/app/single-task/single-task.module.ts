@@ -15,6 +15,7 @@ import { DetailsComponent } from './details/details.component';
 import { BidsComponent } from './bids/bids.component';
 import { ContractComponent } from './contract/contract.component';
 import { ReviewComponent } from './review/review.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { ReviewComponent } from './review/review.component';
     IonicModule,
     SingleTaskPageRoutingModule,
     MaterialModule,
-    SharedModule
+    SharedModule,
+    NgbModule
   ],
   declarations: [
     SingleTaskPage,

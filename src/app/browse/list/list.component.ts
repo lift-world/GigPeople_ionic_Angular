@@ -47,7 +47,7 @@ export class ListComponent implements OnInit, OnDestroy {
   }
 
   onClickLoginToBid(event, task: Task) {
-    this.router.navigate(["../../../login"]);
+    this.router.navigate(["/login"]);
     event.stopPropagation();
     return false;
   }

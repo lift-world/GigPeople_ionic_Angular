@@ -17,10 +17,10 @@
         <tr *ngFor="let task of tasks; let i=index;">
           <th scope="row">{{i+1}}</th>
           <td>
-            <a [routerLink]="'/tasks/single-task/'+task._id">{{task.title}}</a>
+            <a [routerLink]="'/single-task/'+task._id">{{task.title}}</a>
           </td>
-          <td><a [routerLink]="'/tasks/manage-bidders/'+task._id">{{task.refBids.length}}</a></td>
-          <td><a [routerLink]="'/tasks/manage-bidders/'+task._id">{{getAveBidBudget(task.refBids)}} USD
+          <td><a [routerLink]="'/single-task/'+task._id+'/bids'">{{task.refBids.length}}</a></td>
+          <td><a [routerLink]="'/single-task/'+task._id+'/bids'">{{getAveBidBudget(task.refBids)}} USD
               {{task.isHourly?'/hour':''}}</a></td>
           <td></td>
           <td>

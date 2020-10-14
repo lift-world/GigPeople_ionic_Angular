@@ -1,18 +1,14 @@
+<mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+
 <div class="margin-top-50"></div>
 <div class="container">
-  <!-- Dashboard Headline -->
-  <div class="dashboard-headline">
-    <h3>Manage Bidders</h3>
-    <span class="margin-top-7">Bids for <a [routerLink]="'../../../edit-task/'+taskId">{{task?.title}}</a></span>
-  </div>
-  
   <!-- Row -->
   <div class="row">
-  
+
     <!-- Dashboard Box -->
     <div class="col-xl-12">
       <div class="dashboard-box margin-top-0">
-  
+
         <!-- Headline -->
         <div class="headline">
           <h3><i class="icon-material-outline-supervisor-account"></i> {{task?.refBids.length}} Bidders</h3>
@@ -24,7 +20,7 @@
             </select>
           </div>
         </div>
-  
+
         <div class="content">
           <ul class="dashboard-box-list">
             <li *ngFor="let bid of task?.refBids; let i=index;">
@@ -45,21 +41,21 @@
                   <!-- Details -->
                   <span class="freelancer-detail-item"><a><i class="icon-feather-mail"></i>
                       {{bid?.refBidder?.email}}</a></span>
-  
+
                   <!-- Rating -->
                   <div class="freelancer-rating">
                     <app-rating [rate]="4.5"></app-rating>
                   </div>
-  
+
                 </div>
-  
+
                 <div class="bid-description" #ddd>
                   {{bid?.description}}
                   <button *ngIf="150<ddd.scrollHeight" class="more-less-button" (click)="toggleOverflowBid(ddd)">
                     <ion-icon name="ellipsis-horizontal-outline" color="danger"></ion-icon>
                   </button>
                 </div>
-  
+
                 <!-- Bid Details -->
                 <div>
                   <ul class="dashboard-task-info">
@@ -70,7 +66,7 @@
                     </li>
                     <li><strong>{{bid?.duration}} Days</strong><span>Delivery Time</span></li>
                   </ul>
-  
+
                 </div>
                 <div style="margin: 0 20px; display: flex; flex-direction: column; align-content: space-between;">
                   <button class="button ripple-effect" (click)="onClickAcceptOffer(bid?.refBidder?._id)">
@@ -81,15 +77,15 @@
                   </button>
                 </div>
               </div>
-  
-  
+
+
             </li>
-  
+
           </ul>
         </div>
       </div>
     </div>
-  
+
   </div>
   <!-- Row / End -->
 </div>

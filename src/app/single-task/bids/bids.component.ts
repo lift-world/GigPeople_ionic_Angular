@@ -4,15 +4,15 @@ import { Task } from 'src/app/1/models/models';
 import { TaskService } from 'src/app/1/services/task.service';
 
 @Component({
-  selector: "app-manage-bidders",
-  templateUrl: "./manage-bidders.page.html",
-  styleUrls: ["./manage-bidders.page.scss"],
+  selector: "app-bids",
+  templateUrl: "./bids.component.html",
+  styleUrls: ["./bids.component.scss"],
 })
-export class ManageBiddersPage implements OnInit {
+export class BidsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private taskService: TaskService,) {}
   taskId: string;
   ngOnInit() {
-    this.route.paramMap.subscribe((paramMap: ParamMap) => {
+    this.route.parent.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has("taskId")) {
         this.taskId = paramMap.get("taskId");
         this.readTask(this.taskId);
@@ -20,11 +20,14 @@ export class ManageBiddersPage implements OnInit {
     });
   }
 
+  isLoading = true;
   task: Task;
   async readTask(taskId) {
+    this.isLoading = true;
     this.task = await this.taskService.readOneWithRefs(taskId, [
       "refBids_refBidder",
     ]).toPromise();
+    this.isLoading = false;
   }
 
   toggleOverflowBid(ddd) { 

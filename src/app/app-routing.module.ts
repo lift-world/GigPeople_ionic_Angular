@@ -29,10 +29,15 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: "tasks",
-    loadChildren: () =>
-      import("./tasks/tasks.module").then((m) => m.TasksPageModule),
+    path: 'browse',
+    loadChildren: () => import('./browse/browse.module').then(m => m.BrowsePageModule),
+    canActivate: [AuthGuard],  
+  },
+  {
+    path: 'single-task/:taskId',
+    loadChildren: () => import('./single-task/single-task.module').then(m => m.SingleTaskPageModule),
     canActivate: [AuthGuard],
+    
   },
   {
     path: 'my-tasks',

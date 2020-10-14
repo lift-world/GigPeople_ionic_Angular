@@ -17,7 +17,7 @@
         <tr *ngFor="let bid of bids; let i=index;">
           <th scope="row">{{i+1}}</th>
           <td>
-            <a [routerLink]="'/tasks/single-task/'+bid.refTask?._id">{{bid.refTask?.title}}</a>
+            <a [routerLink]="'/single-task/'+bid.refTask?._id">{{bid.refTask?.title}}</a>
           </td>
           <td>{{bid.refTask?.refBids.length}}</td>
           <td></td>
