@@ -1,2 +1,10 @@
-<img class="flag" [src]="getFlagUrl(code)" alt="" height="20px">
-{{getName(code)}}
+<img class="flag" [src]="getFlagUrl(code)" alt="" height="20px"
+  *ngIf="!onlyFlag">
+<span *ngIf="!onlyFlag">{{getName(code)}}</span>
+
+
+
+<img class="flag" [src]="getFlagUrl(code)" alt="" height="20px" 
+  *ngIf="onlyFlag"
+  [ngbTooltip]="getName(code)"
+  tooltipClass="my-custom-class">

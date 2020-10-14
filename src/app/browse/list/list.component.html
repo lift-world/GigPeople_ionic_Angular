@@ -1,4 +1,4 @@
-<h3 class="page-title">Search Results<ion-spinner *ngIf="isLoading"></ion-spinner></h3>
+<h3 class="page-title">Search Results</h3>
 
 <div class="notify-box margin-top-15">
   <div class="switch-container">
@@ -16,6 +16,7 @@
     </select>
   </div>
 </div>
+<mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
 
 <!-- Tasks Container -->
 <div class="tasks-list-container compact-list margin-top-35">
@@ -34,7 +35,7 @@
           <li><i class="icon-material-outline-location-on"></i> {{task.country}}</li>
           <li><i class="icon-material-outline-access-time"></i>{{(task.timestamp)}}</li>
         </ul>
-        <p class="task-listing-text">{{task.description.split(".")[0]}}</p>
+        <p class="task-listing-text">{{task.description}}</p>
         <div class="task-tags">
           <span *ngFor="let skill of task.refSkills">{{skill.title}}</span>
         </div>

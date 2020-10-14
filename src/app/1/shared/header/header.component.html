@@ -207,7 +207,8 @@
           >
             <div class="header-notifications-trigger">
               <a href="#" (click)="toggleUserMenu()">
-                <div class="user-avatar status-online"><img [src]="me?.avatar || 'assets/images/user-avatar-placeholder.png'" alt=""></div>
+                <img width="50px" height="50px" style="border-radius: 20%;"
+                [src]="me?.avatar || 'assets/images/user-avatar-placeholder.png'" alt="">
               </a>
             </div>
 
@@ -219,10 +220,12 @@
 
                 <!-- User Name / Avatar -->
                 <div class="user-details">
-                  <div class="user-avatar status-online"><img [src]="me?.avatar || 'assets/images/user-avatar-placeholder.png'" alt=""></div>
+                  <img width="50px" height="50px" style="border-radius: 20%;"
+                    [src]="me?.avatar || 'assets/images/user-avatar-placeholder.png'" alt="">
                   <div class="user-name">
                     {{me?.firstName}} {{me?.lastName}}
                   </div>
+                  
                 </div>
 
               </div>

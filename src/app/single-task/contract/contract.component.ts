@@ -11,4 +11,9 @@ export class ContractComponent implements OnInit {
 
   ngOnInit() {}
 
+  isLoading = true;
+  readAll() { 
+
+  }
+  
 }

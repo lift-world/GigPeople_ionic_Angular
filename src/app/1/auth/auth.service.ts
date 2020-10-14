@@ -48,7 +48,7 @@ export class AuthService {
         this.login(email, password);
       }, err => { 
         console.log(err);
-        this.toastr.error("Server", err.error.message);
+        this.toastr.error(err.error.message || err.message, "Server");
       });
   }
 

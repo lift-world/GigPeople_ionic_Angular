@@ -9,6 +9,7 @@ import { Country } from "src/app/1/models/Country";
 })
 export class CountryFlagComponent implements OnInit {
   @Input() code: string;
+  @Input() onlyFlag: boolean;
   
   constructor() { }
 

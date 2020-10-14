@@ -1,29 +1,40 @@
+<mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+
 <!-- Titlebar
 ================================================== -->
-<ion-spinner *ngIf="isLoading"></ion-spinner>
-<div *ngIf="!isLoading" class="single-page-header">
+<div *ngIf="!sss.isLoading && sss.task && sss.me" class="single-page-header">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
         <div class="single-page-header-inner">
           <div class="left-side">
             <div class="header-details">
-              <h3>{{task.title}}</h3>
-
+              <h3>{{sss.task.title}}</h3>
             </div>
           </div>
           <div class="right-side">
-            <div class="salary-box">
+            <div class="salary-box">             
               <div class="salary-type">Project Budget</div>
-              <div class="salary-amount">${{task.minBudget}} - ${{task.maxBudget}}</div>
+              <div class="salary-amount">${{sss.task.minBudget}} - ${{sss.task.maxBudget}}</div>
             </div>
           </div>
         </div>
 
         <ul ngbNav class="nav-tabs" [activeId]="router.url.split('/').pop()">
-          <li [ngbNavItem]="link.url" *ngFor="let link of links">
-            <a ngbNavLink [routerLink]="link.url">{{ link.title }}</a>
+
+          <li ngbNavItem="details">
+            <a ngbNavLink routerLink="details">Details</a>
           </li>
+          <li ngbNavItem="bids" *ngIf="isMyProject()">
+            <a ngbNavLink routerLink="bids">Bids</a>
+          </li>
+          <li ngbNavItem="contract" *ngIf="sss.task.status==1">
+            <a ngbNavLink routerLink="contract">Contract</a>
+          </li>
+          <li ngbNavItem="review" *ngIf="sss.task.status==2">
+            <a ngbNavLink routerLink="review">Review</a>
+          </li>
+
         </ul>
 
       </div>
@@ -31,4 +42,4 @@
   </div>
 </div>
 
-<router-outlet *ngIf="!isLoading"></router-outlet>
+<router-outlet *ngIf="!sss.isLoading && sss.task && sss.me"></router-outlet>

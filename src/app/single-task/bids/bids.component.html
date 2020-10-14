@@ -1,91 +1,49 @@
-<mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+<mat-progress-bar mode="indeterminate" *ngIf="sss.isLoading"></mat-progress-bar>
 
 <div class="margin-top-50"></div>
-<div class="container">
-  <!-- Row -->
-  <div class="row">
+<div class="container" *ngIf="!sss.isLoading && sss.task">
+  <mat-card class="row ion-padding margin-bottom-20" *ngFor="let bid of sss.task.refBids">
+    <div style="display: flex;" class="col-12">
 
-    <!-- Dashboard Box -->
-    <div class="col-xl-12">
-      <div class="dashboard-box margin-top-0">
+      <img [src]="bid.refBidder.avatar" class="avatar-img" width="100px" height="100px" />
 
-        <!-- Headline -->
-        <div class="headline">
-          <h3><i class="icon-material-outline-supervisor-account"></i> {{task?.refBids.length}} Bidders</h3>
-          <div class="sort-by">
-            <select>
-              <option>Highest First</option>
-              <option>Lowest First</option>
-              <option>Fastest First</option>
-            </select>
-          </div>
+      <div style="flex: 1;">
+        <div style="padding: 10px 10px;">
+          <app-country-flag [code]="bid.refBidder.country" [onlyFlag]="true">
+          </app-country-flag>
+          
+          <strong style="font-size: large; margin: 0 10px;">
+            <a>
+              {{bid?.refBidder?.firstName}} {{bid?.refBidder?.lastName}}
+            </a>
+          </strong>
         </div>
-
-        <div class="content">
-          <ul class="dashboard-box-list">
-            <li *ngFor="let bid of task?.refBids; let i=index;">
-              <div class="bid-container">
-                <div>
-                  <div class="freelancer-avatar">
-                    <a><img [src]="bid?.refBidder?.avatar" alt=""></a>
-                  </div>
-                </div>
-                <!-- Name -->
-                <div class="freelancer-info">
-                  <div style="display: flex;">
-                    <h4><a>{{bid?.refBidder?.firstName}} {{bid?.refBidder?.lastName}}</a></h4>
-                    <div style="margin-left: 20px;">
-                      <app-country-flag [code]="bid?.refBidder?.country"></app-country-flag>
-                    </div>
-                  </div>
-                  <!-- Details -->
-                  <span class="freelancer-detail-item"><a><i class="icon-feather-mail"></i>
-                      {{bid?.refBidder?.email}}</a></span>
-
-                  <!-- Rating -->
-                  <div class="freelancer-rating">
-                    <app-rating [rate]="4.5"></app-rating>
-                  </div>
-
-                </div>
-
-                <div class="bid-description" #ddd>
-                  {{bid?.description}}
-                  <button *ngIf="150<ddd.scrollHeight" class="more-less-button" (click)="toggleOverflowBid(ddd)">
-                    <ion-icon name="ellipsis-horizontal-outline" color="danger"></ion-icon>
-                  </button>
-                </div>
-
-                <!-- Bid Details -->
-                <div>
-                  <ul class="dashboard-task-info">
-                    <li>
-                      <strong>${{bid?.budget}}</strong>
-                      <span *ngIf="!task?.isHourly">Fixed Price</span>
-                      <span *ngIf="task?.isHourly">Hourly Rate</span>
-                    </li>
-                    <li><strong>{{bid?.duration}} Days</strong><span>Delivery Time</span></li>
-                  </ul>
-
-                </div>
-                <div style="margin: 0 20px; display: flex; flex-direction: column; align-content: space-between;">
-                  <button class="button ripple-effect" (click)="onClickAcceptOffer(bid?.refBidder?._id)">
-                    <i class="icon-material-outline-check"></i> Accept Offer
-                  </button>
-                  <button class="button dark ripple-effect margin-top-7">
-                    <i class="icon-feather-mail"></i>Send Message
-                  </button>
-                </div>
-              </div>
-
-
-            </li>
-
-          </ul>
+        <div  style="padding: 10px 10px;">
+          <app-rating [rate]="4.5"></app-rating>
         </div>
       </div>
-    </div>
 
-  </div>
-  <!-- Row / End -->
+      <div style="text-align: right;">
+        <h2>${{bid.budget}} USD {{sss.task.isHourly?" / hour":""}}</h2>
+        <h4>in {{bid.duration}} days</h4>
+      </div>
+
+    </div>
+    <div #ddd class="col-12" style="height: 100px; overflow: hidden;">
+      <ion-textarea style="border: none; font-size: medium;" autoGrow="true" readonly [value]="bid.description">
+      </ion-textarea>
+    </div>
+    <div class="col-12">
+      <button class="more-less-button" *ngIf="ddd.style.height!='fit-content'" (click)="ddd.style.height='fit-content'">
+        ...read more
+      </button>
+    </div>
+    <ion-toolbar>
+      <button mat-raised-button slot="end" color="primary" class="margin-right-20"
+      (click)="onClickAward(bid)">Chat</button>
+      <button mat-raised-button slot="end" color="accent"
+      (click)="onClickChat(bid)">Award</button>
+    </ion-toolbar>
+
+  </mat-card>
 </div>

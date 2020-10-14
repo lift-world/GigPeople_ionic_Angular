@@ -1,11 +1,11 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, OnInit, AfterViewInit, ViewChild, OnDestroy } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Task, User } from 'src/app/1/models/models';
 import { BidService } from 'src/app/1/services/bid.service';
 
 import { TaskService } from 'src/app/1/services/task.service';
 import { UserService } from 'src/app/1/services/user.service';
+import { SingleTaskService } from './1/single-task.service';
 
 @Component({
   selector: 'app-single-task',
@@ -23,50 +23,22 @@ export class SingleTaskPage implements OnInit {
   constructor(
     public router: Router,
     private route: ActivatedRoute,
-    private taskService: TaskService,
-    private bidService: BidService,
-    private userService: UserService
+    public sss: SingleTaskService
   ) { }
 
-  me: User;
   isLoading: boolean = true;
-  taskId: string;
-  task: Task;
-
-  async ngOnInit() {
-    this.me = await this.userService.getMe();
-
-    this.route.paramMap.subscribe((paramMap: ParamMap) => {
+  ngOnInit() {
+    this.isLoading = true;
+    this.route.paramMap.subscribe(async (paramMap: ParamMap) => {
       // if (paramMap.has('taskId')) {}
-      this.taskId = paramMap.get('taskId');
-      this.isLoading = true;
-
-      this.taskService.readOneWithRefs(this.taskId, ["refCreator", "refSkills", "refBids"]).toPromise().then((task: Task) => { 
-        this.isLoading = false;
-        this.task = task;
-      }).catch(err => {
-        this.isLoading = false;
-        console.log(err);
-      });
-
+      const taskId = paramMap.get('taskId');
+      await this.sss.loadTask(taskId);
+      await this.sss.loadMe();
+      this.isLoading = false;
     });
   }
 
-  isMyProject(me:User, task:Task) {
-    return me?._id === task?.refCreator?._id;
-  }
-
-  alreadyBid(me:User, task:Task) {
-    let k = task.refBids.findIndex(x => x.refBidder === me._id);
-    return k > -1;
-  }
-
-  handleSubmitBid({ budget, duration, description }) {
-    const taskId = this.taskId;
-    this.bidService
-      .createOne({ taskId, budget, duration, description })
-      .subscribe((bid) => {
-        this.task.refBids.unshift(bid);
-      });
+  isMyProject() {
+    return this.sss.me._id === this.sss.task.refCreator._id;
   }
 }

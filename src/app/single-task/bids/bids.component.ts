@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Task } from 'src/app/1/models/models';
+import { Bid, Task } from 'src/app/1/models/models';
 import { TaskService } from 'src/app/1/services/task.service';
+import { SingleTaskService } from '../1/single-task.service';
 
 @Component({
   selector: "app-bids",
@@ -9,25 +10,11 @@ import { TaskService } from 'src/app/1/services/task.service';
   styleUrls: ["./bids.component.scss"],
 })
 export class BidsComponent implements OnInit {
-  constructor(private route: ActivatedRoute, private taskService: TaskService,) {}
-  taskId: string;
-  ngOnInit() {
-    this.route.parent.paramMap.subscribe((paramMap: ParamMap) => {
-      if (paramMap.has("taskId")) {
-        this.taskId = paramMap.get("taskId");
-        this.readTask(this.taskId);
-      }
-    });
-  }
+  constructor(
+    public sss: SingleTaskService
+  ) { }
 
-  isLoading = true;
-  task: Task;
-  async readTask(taskId) {
-    this.isLoading = true;
-    this.task = await this.taskService.readOneWithRefs(taskId, [
-      "refBids_refBidder",
-    ]).toPromise();
-    this.isLoading = false;
+  ngOnInit() {
   }
 
   toggleOverflowBid(ddd) { 
@@ -38,8 +25,11 @@ export class BidsComponent implements OnInit {
     }
   }
 
-  async onClickAcceptOffer(bidderId) {
-    const taskId = this.task._id;
-    await this.taskService.hire(taskId, bidderId);
+  async onClickAward(bid: Bid) {
+    
+  }
+
+  async onClickChat(bid: Bid) {
+    
   }
 }

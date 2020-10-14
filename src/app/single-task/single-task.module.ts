@@ -16,6 +16,7 @@ import { BidsComponent } from './bids/bids.component';
 import { ContractComponent } from './contract/contract.component';
 import { ReviewComponent } from './review/review.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SingleTaskService } from './1/single-task.service';
 
 @NgModule({
   imports: [
@@ -36,6 +37,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BidsComponent,
     ContractComponent,
     ReviewComponent
+  ],
+  providers: [
+    SingleTaskService
   ]
 })
 export class SingleTaskPageModule {}

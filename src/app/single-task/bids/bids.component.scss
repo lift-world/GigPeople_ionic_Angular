@@ -1,42 +1,11 @@
-.bid-container{
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.freelancer-avatar {
-	width: 110px;
-	margin: 0 auto;
-	position: relative;
-}
-
-.freelancer-avatar img {
-	width: 100%;
-	border-radius: 50%;
+.avatar-img {
+	border-radius: 10%;
 	cursor: pointer;
 }
 
-.freelancer-info{
-  flex: 1;
-  min-width: 250px;
-  padding: 20px 20px;
-}
-
-.bid-description{
-  flex: 2;
-  min-width: 350px;
-  padding: 20px 20px;
-  height: 150px;
-  overflow-y: hidden;
-  position: relative;
-}
-
 .more-less-button{
-  position: absolute; 
-  bottom: 0; 
-  right: 20px; 
   font-size: larger; 
-  background-color: white; 
+  background-color: white;
   padding: 0 5px;
+  color: orange;
 }

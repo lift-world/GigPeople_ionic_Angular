@@ -1,9 +1,9 @@
-<mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+<mat-progress-bar mode="indeterminate" *ngIf="sss.isLoading"></mat-progress-bar>
 
 <div class="margin-top-50"></div>
 <!-- Page Content
 ================================================== -->
-<div *ngIf="!isLoading" class="container">
+<div *ngIf="!sss.isLoading" class="container">
   <div class="row">
 
     <!-- Content -->
@@ -12,7 +12,9 @@
       <!-- Description -->
       <div class="single-page-section">
         <h3 class="margin-bottom-25">Project Description</h3>
-        <p>{{task.description}}</p>
+        <ion-textarea style="border: none; font-size: medium;" autoGrow="true" readonly [value]="sss.task.description">
+        </ion-textarea>
+        <!-- <p>{{sss.task.description}}</p> -->
       </div>
 
       <!-- Atachments -->
@@ -27,18 +29,18 @@
       <div class="single-page-section">
         <h3>Skills Required</h3>
         <div class="task-tags">
-          <span *ngFor="let skill of task?.refSkills">{{skill?.title}}</span>
+          <span *ngFor="let skill of sss.task?.refSkills">{{skill?.title}}</span>
         </div>
       </div>
       <div class="clearfix"></div>
 
-      <div *ngIf="!isMyProject(me, task)">
+      <div *ngIf="!isMyProject()">
 
-        <app-place-bid *ngIf="!alreadyBid(me, task)" [minBudget]="task?.minBudget"
+        <app-place-bid *ngIf="!alreadyBid()" [minBudget]="sss.task?.minBudget"
           (handleSubmit)="handleSubmitBid($event)">
         </app-place-bid>
 
-        <div *ngIf="alreadyBid(me, task)" class="countdown green margin-bottom-35">
+        <div *ngIf="alreadyBid()" class="countdown green margin-bottom-35">
           You already placed bid.
           <button routerLink="/me/my-active-bids" style="margin-left: 50px;">
             <span class="icon-feather-edit"></span>
@@ -61,7 +63,7 @@
               <ion-card-title>About the Employer</ion-card-title>
             </ion-card-header>
             <ion-card-content>
-              <app-about-employer [employer]="task.refCreator"></app-about-employer>
+              <app-about-employer [employer]="sss.task.refCreator"></app-about-employer>
             </ion-card-content>
           </ion-card>
         </div>
@@ -71,7 +73,7 @@
         <!-- Freelancers Bidding -->
         <div class="boxed-list margin-bottom-60">
           <div class="boxed-list-headline">
-            <h3><i class="icon-material-outline-group"></i>{{task.refBids.length}} bid(s) placed</h3>
+            <h3><i class="icon-material-outline-group"></i>{{sss.task.refBids.length}} bid(s) placed</h3>
           </div>
         </div>
 

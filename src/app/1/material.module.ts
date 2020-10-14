@@ -28,6 +28,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   exports: [
@@ -53,6 +54,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatTableModule,
     MatTabsModule,
     MatToolbarModule,
+    MatTooltipModule,
     MatFormFieldModule,
     MatButtonToggleModule,
     MatTreeModule,
