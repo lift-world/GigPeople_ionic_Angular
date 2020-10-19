@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/1/auth/auth.service';
 import { Subscription } from 'rxjs';
 import { UserService } from 'src/app/1/services/user.service';
 import { User } from 'src/app/1/models/models';
+import { ChatService } from '../../services/chat.service';
 
 @Component({
   selector: "app-header",
@@ -20,7 +21,8 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(
     private authService: AuthService,
-    private userService: UserService
+    private userService: UserService,
+    private chatService: ChatService
   ) {}
 
   ngAfterViewInit(): void {}
@@ -42,8 +44,12 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   async getMe() { 
-    if (this.userIsAuthenticated) this.me = await this.userService.getMe();
-    else this.me = null;
+    if (this.userIsAuthenticated) {
+      this.me = await this.userService.getMe();
+      this.chatService.doInit(this.me);
+    } else {
+      this.me = null;      
+    }
   }
 
   ngOnDestroy(): void {
@@ -55,11 +61,14 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     this.authService.logout();
   }
 
-  isUserMenu = false;
-  toggleUserMenu() {
-    this.isUserMenu = !this.isUserMenu;
-    return false;
-  }
+  mids = {
+    off: 0,
+    notify: 1,
+    chat: 2,
+    user: 3
+  };
+  
+  menuId = 0;
 
   onClickLogout() {
     this.authService.logout();

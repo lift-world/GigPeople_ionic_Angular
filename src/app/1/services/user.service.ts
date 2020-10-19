@@ -66,4 +66,24 @@ export class UserService {
       }
     );
   }
+
+  private users: User[] = [];
+  async getUserById(id) {
+    let k = this.users.findIndex(x => x._id === id);
+    if (k > -1) return this.users[k];
+
+    try {
+      const user = await this.http
+        .post<User>(this.serverURL + "/api/user/getById", { id })
+        .toPromise();
+      
+      this.users.push(user);
+      return user;
+    } catch (err) {
+      console.log(err);
+      this.toastr.error(err.error.message || err.message, "Server");
+      return null;
+    }
+    
+  }
 }

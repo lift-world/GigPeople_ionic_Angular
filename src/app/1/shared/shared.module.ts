@@ -19,6 +19,8 @@ import { RatingComponent } from './rating/rating.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CountryFlagComponent } from './country-flag/country-flag.component';
 import { UpdateBidComponent } from './update-bid/update-bid.component';
+import { BadgeChatComponent } from './header/badge-chat/badge-chat.component';
+import { BadgeNotifyComponent } from './header/badge-notify/badge-notify.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,10 @@ import { UpdateBidComponent } from './update-bid/update-bid.component';
     ValidMarkerComponent,
     RatingComponent,
     CountryFlagComponent,
-    UpdateBidComponent
+    UpdateBidComponent,
+/**Not export */
+    BadgeChatComponent,
+    BadgeNotifyComponent
   ],
   imports: [
     CommonModule,

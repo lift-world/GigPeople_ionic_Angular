@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Bid, Task } from 'src/app/1/models/models';
+import { ChatService } from 'src/app/1/services/chat.service';
 import { TaskService } from 'src/app/1/services/task.service';
 import { SingleTaskService } from '../1/single-task.service';
 
@@ -11,7 +12,8 @@ import { SingleTaskService } from '../1/single-task.service';
 })
 export class BidsComponent implements OnInit {
   constructor(
-    public sss: SingleTaskService
+    public sss: SingleTaskService,
+    private chatService: ChatService
   ) { }
 
   ngOnInit() {
@@ -26,10 +28,9 @@ export class BidsComponent implements OnInit {
   }
 
   async onClickAward(bid: Bid) {
-    
   }
 
   async onClickChat(bid: Bid) {
-    
+    this.chatService.startChatWith(bid.refBidder._id);
   }
 }

@@ -1,0 +1,47 @@
+<!-- Messages -->
+<div class="header-notifications" [ngClass]="isDropDown?'active':''">
+  <div class="header-notifications-trigger">
+    <a href="#" (click)="handleClickIcon.emit(); false;">
+      <i class="icon-feather-mail"></i>
+      <span *ngIf="unreadMsgsCnt>0">{{unreadMsgsCnt}}</span>
+    </a>
+  </div>
+
+  <!-- Dropdown -->
+  <div class="header-notifications-dropdown" (mouseleave)="handleMouseLeave.emit()">
+
+    <div class="header-notifications-headline">
+      <h4>Messages</h4>
+      <button class="mark-as-read ripple-effect-dark" title="Mark all as read" data-tippy-placement="left">
+        <i class="icon-feather-check-square"></i>
+      </button>
+    </div>
+
+    <div class="header-notifications-content">
+      <div class="header-notifications-scroll" data-simplebar>
+        <ul>
+          <!-- Notification -->
+          <li class="notifications-not-read" *ngFor="let chat of unreadChats; let i=index;">
+            <a [routerLink]="'/me/messages/'+chat.id">
+              <span class="notification-avatar status-online">
+                <img [src]="chat.other.avatar" alt="">
+              </span>
+
+              <div class="notification-text">
+                <div><strong>{{chat.other.firstName}} {{chat.other.lastName}}</strong></div>
+                <div class="notification-msg-text">
+                  {{chat.msgs.slice(-1)[0].content}}
+                </div>
+                <div><span class="color">{{chat.msgs.slice(-1)[0].timestamp}}</span></div>
+              </div>
+            </a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+
+    <a [routerLink]="'me/messages'" class="header-notifications-button ripple-effect button-sliding-icon">View All
+      Messages<i class="icon-material-outline-arrow-right-alt"></i></a>
+  </div>
+</div>

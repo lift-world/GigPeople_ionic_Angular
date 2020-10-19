@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/1/services/user.service';
 
 @Component({
   selector: 'app-bookmarks',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookmarksPage implements OnInit {
 
-  constructor() { }
+  constructor( ) { }
 
   ngOnInit() {
   }

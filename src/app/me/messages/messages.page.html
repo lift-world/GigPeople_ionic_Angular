@@ -1,9 +1,16 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>messages</ion-title>
-  </ion-toolbar>
-</ion-header>
+<!-- Dashboard Headline -->
+<div class="dashboard-headline">
+  <h3>Messages</h3>
+</div>
 
-<ion-content>
+<div class="messages-container margin-top-0">
+  <mat-progress-bar mode="indeterminate" *ngIf="chatService.isLoading"></mat-progress-bar>
 
-</ion-content>
+  <div class="messages-container-inner" style="display: flex;">
+    <app-inbox-list [chats]="chats" [chatId]="chatId"></app-inbox-list>
+    
+    <app-message-body style="flex: 1;" *ngIf="chatId" [chat]="getChatById(chats, chatId)"></app-message-body>
+
+  </div>
+</div>
+<!-- Messages Container / End -->
