@@ -8,30 +8,24 @@ import { UserService } from 'src/app/1/services/user.service';
 import { SingleTaskService } from './1/single-task.service';
 
 @Component({
-  selector: 'app-single-task',
-  templateUrl: './single-task.page.html',
-  styleUrls: ['./single-task.page.scss'],
+  selector: "app-single-task",
+  templateUrl: "./single-task.page.html",
+  styleUrls: ["./single-task.page.scss"],
 })
 export class SingleTaskPage implements OnInit {
-  links = [
-    {title: "Details", url:'details'},
-    {title: "Bids", url:'bids'},
-    {title: "Contract", url:'contract'},
-    {title: "Review", url:'review'},
-  ];
 
   constructor(
     public router: Router,
     private route: ActivatedRoute,
     public sss: SingleTaskService
-  ) { }
+  ) {}
 
   isLoading: boolean = true;
   ngOnInit() {
     this.isLoading = true;
     this.route.paramMap.subscribe(async (paramMap: ParamMap) => {
       // if (paramMap.has('taskId')) {}
-      const taskId = paramMap.get('taskId');
+      const taskId = paramMap.get("taskId");
       await this.sss.loadTask(taskId);
       await this.sss.loadMe();
       this.isLoading = false;
@@ -40,5 +34,9 @@ export class SingleTaskPage implements OnInit {
 
   isMyProject() {
     return this.sss.me._id === this.sss.task.refCreator._id;
+  }
+
+  isMyContract() {
+    return this.sss.me._id === this.sss.task.refCreator._id || this.sss.me._id === this.sss.task.refContract?.refWorker;
   }
 }

@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { firestore } from 'firebase';
+
+import firebase from 'firebase/app';
+
 import { ToastrService } from 'ngx-toastr';
 import { Subject, Subscription } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
@@ -34,7 +35,6 @@ export class ChatService {
     try { 
       this.listenChats_FS(me).subscribe(async (chats: Chat_FS[]) => {
         this.chats = await this.mergeUserData(chats);
-        console.log(this.chats);
         this.subjectChats.next(this.chats);
         this.isLoading = false;
       });
@@ -59,11 +59,7 @@ export class ChatService {
 
   private listenChats_FS(me: User) {
     return this.afs
-      .collection<Chat_FS>("chats", (ref) => {
-        return (
-          ref.where("users", "array-contains", me._id) 
-        );
-      })
+      .collection<Chat_FS>("chats", (ref) => ref.where("users", "array-contains", me._id) )
       .snapshotChanges()
       .pipe(map((actions) => actions.map((a) => ({ id:a.payload.doc.id, ...a.payload.doc.data() }))));
   }
@@ -100,19 +96,31 @@ export class ChatService {
     return this.router.navigate(['/me/messages', chatId]);
   }
 
-  async sendMessage(chatId, content) {
-    const me = await this.userService.getMe();
-    const sender = me._id;
-    const data = {
-      sender,
-      content,
-      timestamp: Date.now()
+  async sendMessage(chatId, data) {
+    const senderId = this.me._id;
+    const newMsg: Msg = {
+      senderId,
+      content: data.text,
+      timestamp: Date.now(),
+      isRead: false
     };
 
     const ref = this.afs.collection("chats").doc(chatId);
     return ref.update({
-      messages: firestore.FieldValue.arrayUnion(data),
+      msgs: firebase.firestore.FieldValue.arrayUnion(newMsg),
     });
+  }
+
+  async markAllAsRead(chat:Chat) {
+    chat.msgs.forEach((msg, i) => { 
+      if (msg.senderId !== this.me._id) msg.isRead = true;
+    });
+
+    const ref = this.afs.collection("chats").doc(chat.id);
+    ref.update({
+      msgs: chat.msgs
+    });
+
   }
 
 }

@@ -1,0 +1,39 @@
+<div class="container" style="font-size: large;">
+  <div class="row" style="text-align: center; margin-bottom:50px;">
+    <ion-title>{{data.taskTitle}}</ion-title>
+  </div>
+  <div class="row">
+    <div class="col-xl-6"><strong>Employer</strong></div>
+    <div class="col-xl-6">{{data.employer.firstName}} {{data.employer.lastName}}</div>
+  </div>
+  <div class="row">
+    <div class="col-xl-6"><strong>Freelancer</strong></div>
+    <div class="col-xl-6">{{data.worker.firstName}} {{data.worker.lastName}}</div>
+  </div>
+
+  <div class="row">
+    <div class="col-xl-6">
+      <strong *ngIf="!data.isHourly">Budget (USD)</strong>
+      <strong *ngIf="data.isHourly">Budget (USD/hour)</strong>
+    </div>
+    <div class="col-xl-6"><ion-input type="number" step="100" [(ngModel)]="data.budget"></ion-input></div>
+  </div>
+  <div class="row">
+    <div class="col-xl-6"></div>
+    <div class="col-xl-6">
+      <app-yes-no strYes="Hourly" strNo="Fixed" [(ngModel)]="data.isHourly"></app-yes-no>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-6"><strong>Duration (days)</strong></div>
+    <div class="col-xl-6"><ion-input type="number" [(ngModel)]="data.duration"></ion-input></div>
+  </div>
+  <div class="row">
+    <div class="col-xl-6"><strong>Deadline</strong></div>
+    <div class="col-xl-6">{{ startDate + 1000*3600*24*data.duration | date}}</div>
+  </div>
+</div>
+<ion-toolbar>
+  <button mat-raised-button color="primary" slot="end" (click)="onYesClick()">Offer contract</button>
+  <button mat-raised-button color="accent" slot="end" (click)="onNoClick()">Cancel</button>
+</ion-toolbar>

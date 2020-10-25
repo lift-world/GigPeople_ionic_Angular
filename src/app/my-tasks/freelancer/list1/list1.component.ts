@@ -10,6 +10,6 @@ export class List1Component implements OnInit {
   constructor() { }
 
   isLoading = false;
-  ngOnInit() {}
+  ngOnInit() { }
 
 }

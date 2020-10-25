@@ -32,7 +32,7 @@
                 <div class="notification-msg-text">
                   {{chat.msgs.slice(-1)[0].content}}
                 </div>
-                <div><span class="color">{{chat.msgs.slice(-1)[0].timestamp}}</span></div>
+                <div><span class="color">{{chat.msgs.slice(-1)[0].timestamp | date}}</span></div>
               </div>
             </a>
           </li>

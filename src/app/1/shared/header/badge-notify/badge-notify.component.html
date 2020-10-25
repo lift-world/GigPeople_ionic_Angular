@@ -3,7 +3,10 @@
 
   <!-- Trigger -->
   <div class="header-notifications-trigger">
-    <a href="#" (click)="handleClickIcon.emit(); false;"><i class="icon-feather-bell"></i><span>4</span></a>
+    <a href="#" (click)="handleClickIcon.emit(); false;">
+      <i class="icon-feather-bell"></i>
+      <span *ngIf="numNotRead>0">{{numNotRead}}</span>
+    </a>
   </div>
 
   <!-- Dropdown -->
@@ -20,18 +23,27 @@
       <div class="header-notifications-scroll" data-simplebar>
         <ul>
           <!-- Notification -->
-          <li class="notifications-not-read">
-            <a href="dashboard-manage-candidates.html">
-              <span class="notification-icon"><i class="icon-material-outline-group"></i></span>
+          <li *ngFor="let notif of notifs; let i = index;">
+            <a *ngIf="notif.type==Notif_Type.AWARD_BID" (click)="onClickNotif(notif, i)"
+            [routerLink]="'/single-task/'+notif.data.taskId+'/contract'">
+              <span class="notification-icon"><i class="icon-feather-star"></i></span>
               <span class="notification-text">
-                <strong>Michael Shannah</strong> applied for a job <span class="color">Full Stack Software
-                  Engineer</span>
+                Task <span class="color">{{notif.data.taskTitle}}</span> is awarded on your bid!
+              </span>
+            </a>
+
+            <a *ngIf="notif.type==Notif_Type.CONTRACT_AGREED" (click)="onClickNotif(notif, i)"
+            [routerLink]="'/single-task/'+notif.data.taskId+'/contract'">
+              <span class="notification-icon"><i class="icon-feather-star"></i></span>
+              <span class="notification-text">
+                {{notif.text}}
               </span>
             </a>
           </li>
 
-          <!-- Notification -->
-          <li>
+          <!-- Other Notif_Types here -->
+
+          <!-- <li>
             <a href="dashboard-manage-bidders.html">
               <span class="notification-icon"><i class=" icon-material-outline-gavel"></i></span>
               <span class="notification-text">
@@ -41,7 +53,6 @@
             </a>
           </li>
 
-          <!-- Notification -->
           <li>
             <a href="dashboard-manage-jobs.html">
               <span class="notification-icon"><i class="icon-material-outline-autorenew"></i></span>
@@ -51,7 +62,6 @@
             </a>
           </li>
 
-          <!-- Notification -->
           <li>
             <a href="dashboard-manage-candidates.html">
               <span class="notification-icon"><i class="icon-material-outline-group"></i></span>
@@ -60,7 +70,7 @@
                   Engineer</span>
               </span>
             </a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>

@@ -3,9 +3,9 @@ import { Bid, Task } from 'src/app/1/models/models';
 import { TaskService } from 'src/app/1/services/task.service';
 
 @Component({
-  selector: 'app-list0',
-  templateUrl: './list0.component.html',
-  styleUrls: ['./list0.component.scss'],
+  selector: "app-list0",
+  templateUrl: "./list0.component.html",
+  styleUrls: ["./list0.component.scss"],
 })
 export class List0Component implements OnInit {
   constructor(private taskService: TaskService) {}
@@ -28,8 +28,9 @@ export class List0Component implements OnInit {
     return Math.round((sum / bids.length) * 100) / 100;
   }
 
-  async onClickDelete(task:Task, i) {
+  async onClickDelete(task: Task, i) {
     await this.taskService.deleteOne(task._id).toPromise();
     this.tasks.splice(i, 1);
   }
 }
+

@@ -1,3 +1,58 @@
-<p>
-  contract works!
-</p>
+
+<div class="margin-top-50"></div>
+
+<mat-card class="container" style="width: 500px; font-size: large;">
+    <div class="row" style="text-align: center; margin-bottom:50px;">
+      <ion-title>{{sss.task.title}}</ion-title>
+      <ion-badge color="secondary" style="font-size: medium;" *ngIf="sss.task.refContract?.status==Contract_Status.INTERVIEW">Pending</ion-badge>
+      <ion-badge color="secondary" style="font-size: medium;" *ngIf="sss.task.refContract?.status==Contract_Status.STARTED">Agreed</ion-badge>
+      <ion-badge color="secondary" style="font-size: medium;" *ngIf="sss.task.refContract?.status==Contract_Status.FINISHED">Completed</ion-badge>
+      <ion-badge color="secondary" style="font-size: medium;" *ngIf="sss.task.refContract?.status==Contract_Status.CANCELED">Canceled</ion-badge>
+    </div>
+    <div class="row">
+      <div class="col-xl-6"><strong>Employer</strong></div>
+      <div class="col-xl-6">{{sss.task.refCreator.firstName}} {{sss.task.refCreator.lastName}}</div>
+    </div>
+    <div class="row">
+      <div class="col-xl-6"><strong>Freelancer</strong></div>
+      <div class="col-xl-6">{{workerName(sss.task.refContract.refWorker)}}</div>
+    </div>
+
+    <div class="row">
+      <div class="col-xl-6">
+        <strong *ngIf="!sss.task.refContract?.isHourly">Budget (USD)</strong>
+        <strong *ngIf="sss.task.refContract?.isHourly">Budget (USD/hour)</strong>
+      </div>
+      <div class="col-xl-6">
+        <!-- <ion-input type="number" step="100" [(ngModel)]="data.budget"></ion-input> -->
+        {{sss.task.refContract.budget}}
+      </div>
+    </div>
+    <!-- <div class="row">
+      <div class="col-xl-6"></div>
+      <div class="col-xl-6">
+        <app-yes-no strYes="Hourly" strNo="Fixed" [(ngModel)]="data.isHourly"></app-yes-no>
+      </div>
+    </div> -->
+    <!-- <div class="row">
+      <div class="col-xl-6"><strong>Duration (days)</strong></div>
+      <div class="col-xl-6"><ion-input type="number" [(ngModel)]="data.duration"></ion-input></div>
+    </div> -->
+    <div class="row">
+      <div class="col-xl-6"><strong>Deadline</strong></div>
+      <div class="col-xl-6">{{ sss.task.refContract?.endDate | date}}</div>
+    </div>
+
+    <ion-toolbar *ngIf="sss.task.refContract?.refWorker === sss.me._id">
+      <button mat-raised-button slot="end" color="accent" (click)="onClickAccept()"
+      *ngIf="sss.task.refContract?.status==Contract_Status.INTERVIEW">Accept</button>
+
+      <!-- <button mat-raised-button slot="end" color="accent" (click)="onClickRequestRelease()"
+      *ngIf="sss.task.refContract?.status==Contract_Status.STARTED">Request Release</button> -->
+    </ion-toolbar>
+
+    <ion-toolbar *ngIf="sss.task.refContract?.refEmployer === sss.me._id">
+      <button mat-raised-button slot="end" color="accent" (click)="onClickRelease()"
+      *ngIf="sss.task.refContract?.status==Contract_Status.STARTED">Release</button>
+    </ion-toolbar>
+</mat-card>

@@ -3,7 +3,8 @@ import { AuthService } from 'src/app/1/auth/auth.service';
 import { Subscription } from 'rxjs';
 import { UserService } from 'src/app/1/services/user.service';
 import { User } from 'src/app/1/models/models';
-import { ChatService } from '../../services/chat.service';
+import { ChatService } from 'src/app/1/services/chat.service';
+import { NotifService } from 'src/app/1/services/notif.service';
 
 @Component({
   selector: "app-header",
@@ -22,7 +23,8 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     private authService: AuthService,
     private userService: UserService,
-    private chatService: ChatService
+    private chatService: ChatService,
+    private notifService: NotifService
   ) {}
 
   ngAfterViewInit(): void {}
@@ -47,6 +49,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.userIsAuthenticated) {
       this.me = await this.userService.getMe();
       this.chatService.doInit(this.me);
+      this.notifService.doInit(this.me);
     } else {
       this.me = null;      
     }

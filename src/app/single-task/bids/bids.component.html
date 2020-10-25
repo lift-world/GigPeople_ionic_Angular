@@ -2,7 +2,9 @@
 
 <div class="margin-top-50"></div>
 <div class="container" *ngIf="!sss.isLoading && sss.task">
-  <mat-card class="row ion-padding margin-bottom-20" *ngFor="let bid of sss.task.refBids">
+
+  <mat-card class="row ion-padding margin-bottom-20"
+   *ngFor="let bid of sss.task.refBids">
     <div style="display: flex;" class="col-12">
 
       <img [src]="bid.refBidder.avatar" class="avatar-img" width="100px" height="100px" />
@@ -40,7 +42,13 @@
     </div>
     <ion-toolbar>
       <button mat-raised-button slot="end" color="primary" class="margin-right-20"
+      *ngIf="!sss.task.refContract"
       (click)="onClickAward(bid)">Award</button>
+      
+      <ion-text *ngIf="isAwarded(bid)" color="primary" slot="end" style="font-size: xx-large; margin-right: 2rem;">
+        <ion-icon name="checkmark-done-outline" color="primary" ></ion-icon>
+        Awarded
+      </ion-text>
       <button mat-raised-button slot="end" color="accent"
       (click)="onClickChat(bid)">Chat</button>
     </ion-toolbar>

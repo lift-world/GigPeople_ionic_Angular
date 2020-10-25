@@ -22,7 +22,7 @@
           <td>{{bid.refTask?.refBids.length}}</td>
           <td></td>
           <td>{{bid.budget}} USD {{bid.refTask?.isHourly?'/hour':''}}</td>
-          <td>{{bid.timestamp}}</td>
+          <td>{{bid.timestamp | date:"medium"}}</td>
           <td></td>
         </tr>
       </tbody>

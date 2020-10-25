@@ -1,5 +1,5 @@
 <!-- Message Content -->
-<div class="message-content" style="display: flex; flex-direction: column; height: 100%;"> 
+<div class="message-content">
 
   <div class="messages-headline">
     <h4>{{chat?.other.firstName}} {{chat?.other.lastName}}</h4>
@@ -7,7 +7,7 @@
   </div>
 
   <!-- Message Content Inner -->
-  <div class="message-content-inner" style="flex: 1;">
+  <div class="message-content-inner" style="height: 50vh; overflow-y:auto;" #scrollFrame>
 
     <!-- Time Sign -->
     <div class="message-time-sign">
@@ -47,7 +47,7 @@
   <form class="message-reply" [formGroup]="form"
   (ngSubmit)="onSubmit()" (keydown)="($event.keyCode==13)?onSubmit():null">
 
-    <textarea rows="1" placeholder="Your Message" formControlName="text"></textarea>
+    <textarea rows="1" placeholder="Your Message" formControlName="text" (focus)="onFocus()"></textarea>
     <button mat-raised-button color="default" class="margin-right-20"
       type="submit">Send</button>
 

@@ -1,6 +1,6 @@
 <!-- Dashboard Sidebar
 	================================================== -->
-<div class="dashboard-sidebar">
+<div class="dashboard-sidebar" style="min-width: 200px;">
   <div class="dashboard-sidebar-inner" data-simplebar>
     <div class="dashboard-nav-container">
 
@@ -24,7 +24,10 @@
             </li>
 
             <li [routerLink]="'messages'" routerLinkActive="active">
-              <a href="#"><i class="icon-material-outline-question-answer"></i> Messages <span class="nav-tag">2</span></a>
+              <a href="#"><i class="icon-material-outline-question-answer"></i> 
+                Messages 
+                <span class="nav-tag" *ngIf="unreadMsgsCnt>0">{{unreadMsgsCnt}}</span>
+              </a>
             </li>
             <li [routerLink]="'bookmarks'" routerLinkActive="active">
               <a href="#"><i class="icon-material-outline-star-border"></i> Bookmarks</a>

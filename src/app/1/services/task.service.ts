@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
 import { environment } from "src/environments/environment"; 
-import { Task } from 'src/app/1/models/models';
+import { Bid, Task } from 'src/app/1/models/models';
 import { TaskFilter } from 'src/app/1/models/TaskFilter';
 
 @Injectable({
@@ -19,7 +19,11 @@ export class TaskService {
   tasks: Task[] = [];
   subjectTasks = new Subject<Task[]>();
 
-  constructor(private http: HttpClient, private toastr: ToastrService, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private toastr: ToastrService,
+    private router: Router
+  ) {}
 
   createOne(data) {
     this.isLoading = true;
@@ -49,8 +53,8 @@ export class TaskService {
 
     this.http.put(this.serverURL + "/api/task", data).subscribe(
       (task: Task) => {
-        let k = this.tasks.findIndex(x => x._id === task._id);
-        if(k>-1) this.tasks[k] = task;
+        let k = this.tasks.findIndex((x) => x._id === task._id);
+        if (k > -1) this.tasks[k] = task;
         this.subjectTasks.next(this.tasks);
 
         this.isLoading = false;
@@ -58,7 +62,6 @@ export class TaskService {
 
         this.toastr.success("Updated successfully!", "Task");
         this.router.navigate(["/my-tasks/employer/open-tasks"]);
-
       },
       (err) => {
         console.log(err);
@@ -88,29 +91,22 @@ export class TaskService {
   }
 
   readOneWithRefs(id: string, refs: string[]) {
-    return this.http.post<Task>(this.serverURL + "/api/task/readOneWithRefs", {id, refs});
+    return this.http.post<Task>(this.serverURL + "/api/task/readOneWithRefs", {
+      id,
+      refs,
+    });
   }
 
   readMyTasks(status) {
-    return this.http.post<Task[]>(this.serverURL + "/api/task/readMyTasks", {status});
+    return this.http.post<Task[]>(this.serverURL + "/api/task/readMyTasks", {
+      status,
+    });
   }
 
   deleteOne(id) {
     return this.http.post(this.serverURL + "/api/task/delete", { id });
   }
 
-  async hire(taskId, bidderId) {
-    return new Promise(async(resolve, reject) => { 
-      try {
-        let result = await this.http.post(this.serverURL + "/api/task/hire", { taskId, bidderId }).toPromise();
-
-        
-        resolve();
-      } catch (err) {
-        console.log(err);
-        this.toastr.error(err.error.message || err.message, "Server");
-      }
-    });
-  }
+  
 }
 

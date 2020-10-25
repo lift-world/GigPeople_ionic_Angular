@@ -9,8 +9,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class EmployerPage implements OnInit {
   links = [
     {title: "Open Tasks", url:'open-tasks'},
-    {title: "Work in Progress", url:'work-in-progress'},
-    {title: "Past Tasks", url:'past-tasks'},
+    {title: "Current Contracts", url:'work-in-progress'},
+    {title: "Past Contracts", url:'past-tasks'},
   ];
 
   constructor(public route: ActivatedRoute, public router: Router) {}

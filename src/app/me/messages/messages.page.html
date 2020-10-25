@@ -9,7 +9,9 @@
   <div class="messages-container-inner" style="display: flex;">
     <app-inbox-list [chats]="chats" [chatId]="chatId"></app-inbox-list>
     
-    <app-message-body style="flex: 1;" *ngIf="chatId" [chat]="getChatById(chats, chatId)"></app-message-body>
+    <app-message-body style="flex: 1;" *ngIf="chatId" [chat]="getChatById(chats, chatId)"
+      (handleSubmit)="handleSubmit($event)" (handleFocus)="markAllAsRead($event)"
+    ></app-message-body>
 
   </div>
 </div>

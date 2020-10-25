@@ -10,8 +10,8 @@ export class FreelancerPage implements OnInit {
 
   links = [
     {title: "Active Bids", url:'active-bids'},
-    {title: "Current Tasks", url:'current-tasks'},
-    {title: "Past Tasks", url:'past-tasks'},
+    {title: "Current Contracts", url:'current-tasks'},
+    {title: "Past", url:'past-tasks'},
   ];
 
   constructor(public route: ActivatedRoute, public router: Router) {

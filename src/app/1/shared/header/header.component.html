@@ -18,13 +18,6 @@
         <nav id="navigation">
           <ul id="responsive">
 
-            <li>
-              <a [routerLink]="['/home']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{exact: true}">
-                <i class="icon-material-outline-home"></i> 
-                Home
-              </a>
-            </li>
-
             <li *ngIf="userIsAuthenticated">
               <a [routerLink]="['/browse']" routerLinkActive="router-link-active">
                 <i class="icon-material-outline-assignment"></i>Browse Tasks
@@ -36,9 +29,6 @@
                 <i class="icon-material-outline-assignment"></i>My Tasks
               </a>
             </li>
-
-            <li><a [routerLink]="['/home/about']" routerLinkActive="router-link-active"><i class="icon-material-outline-group
-            "></i> About Us</a></li>
 
             <li><a [routerLink]="['/home/help']" routerLinkActive="router-link-active"><i class="icon-material-outline-help-outline"></i>
                 Help & Support</a></li>

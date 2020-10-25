@@ -42,4 +42,12 @@ export class MessagesPage implements OnInit {
   getChatById(chats:Chat[], chatId) {
     return chats.find(x => x.id === chatId) || null;
   }
+
+  handleSubmit(data) {
+    this.chatService.sendMessage(this.chatId, data);
+  }
+
+  markAllAsRead(chat: Chat) {
+    this.chatService.markAllAsRead(chat);
+  }
 }

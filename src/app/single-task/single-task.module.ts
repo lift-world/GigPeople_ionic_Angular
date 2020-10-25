@@ -17,6 +17,7 @@ import { ContractComponent } from './contract/contract.component';
 import { ReviewComponent } from './review/review.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SingleTaskService } from './1/single-task.service';
+import { ContractModalComponent } from './bids/contract-modal/contract-modal.component';
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import { SingleTaskService } from './1/single-task.service';
     DetailsComponent,
     BidsComponent,
     ContractComponent,
-    ReviewComponent
+    ReviewComponent,
+    ContractModalComponent
   ],
   providers: [
     SingleTaskService
