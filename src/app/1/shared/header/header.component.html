@@ -89,9 +89,10 @@
               </div>
 
               <ul class="user-menu-small-nav">
-                <li><a [routerLink]="'me/dashboard'"><i class="icon-material-outline-dashboard"></i> Dashboard</a></li>
-                <li><a [routerLink]="'me/settings'"><i class="icon-material-outline-settings"></i> Settings</a></li>
-                <li><a href="#" (click)="onClickLogout()"><i class="icon-material-outline-power-settings-new"></i> Logout</a></li>
+                <li class="margin-top-10"><a [routerLink]="'/me/settings'"><i class="icon-material-outline-settings"></i>Profile</a></li>
+                <li class="margin-top-10"><a [routerLink]="'/finance/membership'"><i class="icon-material-outline-credit-card"></i>Membership</a></li>
+                <li class="margin-top-10"><a [routerLink]="'/me/dashboard'"><i class="icon-material-outline-dashboard"></i>Dashboard</a></li>                
+                <li class="margin-top-10"><a href="#" (click)="onClickLogout()"><i class="icon-material-outline-power-settings-new"></i> Logout</a></li>
               </ul>
 
             </div>

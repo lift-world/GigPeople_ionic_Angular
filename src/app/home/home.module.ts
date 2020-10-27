@@ -22,7 +22,7 @@ import { HelpComponent } from './help/help.component';
     HomePage,
     LandingPageComponent,
     AboutComponent,
-    HelpComponent
+    HelpComponent,
   ]
 })
 export class HomePageModule {}
