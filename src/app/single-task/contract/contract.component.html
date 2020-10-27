@@ -3,7 +3,7 @@
 
 <mat-card class="container" style="width: 500px; font-size: large;">
     <div class="row" style="text-align: center; margin-bottom:50px;">
-      <ion-title>{{sss.task.title}}</ion-title>
+      <ion-title style="max-width: 350px;">{{sss.task.title}}</ion-title>
       <ion-badge color="secondary" style="font-size: medium;" *ngIf="sss.task.refContract?.status==Contract_Status.INTERVIEW">Pending</ion-badge>
       <ion-badge color="secondary" style="font-size: medium;" *ngIf="sss.task.refContract?.status==Contract_Status.STARTED">Agreed</ion-badge>
       <ion-badge color="secondary" style="font-size: medium;" *ngIf="sss.task.refContract?.status==Contract_Status.RELEASED">Released</ion-badge>

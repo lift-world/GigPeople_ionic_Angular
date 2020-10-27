@@ -1,0 +1,45 @@
+<!-- Dashboard Headline -->
+<div class="dashboard-headline">
+  <h3>Finance</h3>
+</div>
+
+<!-- Fun Facts Container -->
+<div class="fun-facts-container" style="width: 500px;">
+  <div class="fun-fact" data-fun-fact-color="#b81b7f" >
+    <div class="fun-fact-text">
+      <span>Balance(US$)</span>
+      <h4>{{financeService.profile?.balance | currency}}</h4>
+    </div>
+    <div class="fun-fact-icon"><i class="icon-line-awesome-money"></i></div>
+  </div>
+</div>
+
+<!-- Row -->
+<div class="row">
+
+  <div class="col-xl-8">
+    <!-- Dashboard Box -->
+    <div class="dashboard-box main-box-in-row">
+      <div class="headline">
+        <h3><i class="icon-feather-bar-chart-2"></i> Transaction History</h3>
+        <div class="sort-by">
+          <select>
+            <option>Last 6 Months</option>
+            <option>This Year</option>
+            <option>This Month</option>
+          </select>
+        </div>
+      </div>
+      <div class="content">
+
+      </div>
+    </div>
+    <!-- Dashboard Box / End -->
+  </div>
+  <div class="col-xl-4">
+
+  </div>
+</div>
+<!-- Row / End -->
+
+

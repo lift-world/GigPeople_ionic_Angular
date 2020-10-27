@@ -8,23 +8,32 @@
           <th scope="col">Task Title</th>
           <th scope="col">Bids</th>
           <th scope="col">Freelancer</th>
-          <th scope="col">Awarded Bid</th>
-          <th scope="col">Time</th>
+          <th scope="col">Budget</th>
+          <th scope="col">End Date</th>
           <th scope="col">Status</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let task of tasks; let i=index;">
+        <tr *ngFor="let contract of contracts; let i=index;">
           <th scope="row">{{i+1}}</th>
           <td>
-            <a [routerLink]="'/single-task/'+task._id">{{task.title}}</a>
+            <a [routerLink]="'/single-task/'+contract.refTask._id">{{contract.refTask.title}}</a>
           </td>
-          <td>{{task.refBids.length}}</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>{{contract.refTask.refBids.length}}</td>
+          <td>
+            <a href="#" (click)="false">{{contract.refWorker.firstName}} {{contract.refWorker.lastName}}</a>
+          </td>
+          <td>
+            {{contract.budget | currency}} 
+            <span *ngIf="contract.isHourly">/hour</span>
+          </td>
+          <td>
+            {{contract.endDate | date}}
+          </td>
+          <td>
+            Released
+          </td>
           <td></td>
         </tr>
       </tbody>

@@ -24,6 +24,13 @@ const routes: Routes = [
           ),
       },
       {
+        path: "finance",
+        loadChildren: () =>
+          import("./finance/finance.module").then(
+            (m) => m.FinancePageModule
+          ),
+      },
+      {
         path: "bookmarks",
         loadChildren: () =>
           import("./bookmarks/bookmarks.module").then(
@@ -38,12 +45,18 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'post-task',
-        loadChildren: () => import('./post-task/post-task.module').then(m => m.PostTaskPageModule),
+        path: "post-task",
+        loadChildren: () =>
+          import("./post-task/post-task.module").then(
+            (m) => m.PostTaskPageModule
+          ),
       },
       {
-        path: 'edit-task/:taskId',
-        loadChildren: () => import('./post-task/post-task.module').then(m => m.PostTaskPageModule),        
+        path: "edit-task/:taskId",
+        loadChildren: () =>
+          import("./post-task/post-task.module").then(
+            (m) => m.PostTaskPageModule
+          ),
       },
       {
         path: "reviews",
@@ -52,7 +65,11 @@ const routes: Routes = [
       },
     ],
   },
-
+  {
+    path: "finance",
+    loadChildren: () =>
+      import("./finance/finance.module").then((m) => m.FinancePageModule),
+  },
 ];
 
 @NgModule({

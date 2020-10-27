@@ -4,6 +4,7 @@ import { Subject } from "rxjs";
 import { ToastrService } from "ngx-toastr";
 import { environment } from "src/environments/environment";
 import { Router } from '@angular/router';
+import { Contract } from '../models/models';
 
 @Injectable({
   providedIn: "root",
@@ -42,6 +43,21 @@ export class ContractService {
       this.toastr.error("Server", err.error.message || err.message);
       this.isLoading = false;
     }
+  }
+
+  readMyContracts({ isEmployer , status }) { 
+    return new Promise<Contract[]>(async (resolve, reject) => {
+      try {
+        let contracts = await this.http
+          .post<Contract[]>(this.serverURL + "/api/contract/readMyContracts", {isEmployer, status})
+          .toPromise();
+        resolve(contracts);
+      } catch (err) {
+        console.log(err);
+        this.toastr.error(err.error.message || err.message, "Server");
+        reject();
+      }
+    });
   }
 }
 

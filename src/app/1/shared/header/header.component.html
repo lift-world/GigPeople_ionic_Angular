@@ -81,7 +81,7 @@
                     [src]="me?.avatar || 'assets/images/user-avatar-placeholder.png'" alt="">
                   <div class="user-name">
                     {{me?.firstName}} {{me?.lastName}}
-                    <div>${{financeService.profile?.balance}}</div>
+                    <div>{{financeService.profile?.balance | currency}}</div>
                   </div>
                   
                 </div>

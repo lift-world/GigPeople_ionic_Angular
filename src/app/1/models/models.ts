@@ -49,6 +49,18 @@ export interface Bid {
   timestamp: string;
 }
 
+export interface Contract {
+  _id: any;
+  refEmployer: any;
+  refWorker: any;
+  refTask: any;
+  budget: number;
+  isHourly: boolean;
+  duration: number;
+  status: number; // Contract_Status
+  startDate: number;
+  endDate: number;
+}
 
 export interface FinancialProfile {
   balance: number;
