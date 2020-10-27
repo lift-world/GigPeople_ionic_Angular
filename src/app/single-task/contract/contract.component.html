@@ -6,7 +6,7 @@
       <ion-title>{{sss.task.title}}</ion-title>
       <ion-badge color="secondary" style="font-size: medium;" *ngIf="sss.task.refContract?.status==Contract_Status.INTERVIEW">Pending</ion-badge>
       <ion-badge color="secondary" style="font-size: medium;" *ngIf="sss.task.refContract?.status==Contract_Status.STARTED">Agreed</ion-badge>
-      <ion-badge color="secondary" style="font-size: medium;" *ngIf="sss.task.refContract?.status==Contract_Status.FINISHED">Completed</ion-badge>
+      <ion-badge color="secondary" style="font-size: medium;" *ngIf="sss.task.refContract?.status==Contract_Status.RELEASED">Released</ion-badge>
       <ion-badge color="secondary" style="font-size: medium;" *ngIf="sss.task.refContract?.status==Contract_Status.CANCELED">Canceled</ion-badge>
     </div>
     <div class="row">

@@ -1,3 +1,4 @@
+import { Contract_Status } from 'src/app/1/models/enums';
 import { Component, OnInit, AfterViewInit, ViewChild, OnDestroy } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Task, User } from 'src/app/1/models/models';
@@ -14,6 +15,7 @@ import { SingleTaskService } from './1/single-task.service';
 })
 export class SingleTaskPage implements OnInit {
 
+  Contract_Status = Contract_Status;
   constructor(
     public router: Router,
     private route: ActivatedRoute,

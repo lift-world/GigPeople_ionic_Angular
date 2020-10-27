@@ -31,5 +31,7 @@ export class ContractComponent implements OnInit {
 
   onClickRequestRelease() {}
 
-  onClickRelease() { }
+  onClickRelease() { 
+    this.sss.releaseContract(this.sss.task.refContract._id);
+  }
 }

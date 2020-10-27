@@ -28,7 +28,8 @@ import { ContractModalComponent } from './bids/contract-modal/contract-modal.com
     SingleTaskPageRoutingModule,
     MaterialModule,
     SharedModule,
-    NgbModule
+    NgbModule,
+    SharedModule
   ],
   declarations: [
     SingleTaskPage,

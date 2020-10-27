@@ -34,7 +34,6 @@ export class NotifService {
     try {
       this.listen_FS(me).subscribe((notifs: Notif[]) => { 
         this.notifs = notifs;
-        console.log(this.notifs);
         this.subjectNotifs.next(this.notifs);
         this.isLoading = false;
       });

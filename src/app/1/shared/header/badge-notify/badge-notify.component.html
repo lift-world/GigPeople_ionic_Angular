@@ -39,6 +39,14 @@
                 {{notif.text}}
               </span>
             </a>
+
+            <a *ngIf="notif.type==Notif_Type.RELEASED" (click)="onClickNotif(notif, i)"
+            [routerLink]="'/single-task/'+notif.data.taskId+'/contract'">
+              <span class="notification-icon"><i class="icon-feather-star"></i></span>
+              <span class="notification-text">
+                {{notif.text}}
+              </span>
+            </a>
           </li>
 
           <!-- Other Notif_Types here -->

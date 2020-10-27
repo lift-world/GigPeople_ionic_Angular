@@ -8,6 +8,6 @@ export const Notif_Type = {
 export const Contract_Status = {
   INTERVIEW: 0,
   STARTED: 1,
-  FINISHED: 2,
+  RELEASED: 2,
   CANCELED: 3,
 };

@@ -1,3 +1,4 @@
+import { FinanceService } from 'src/app/1/services/finance.service';
 import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { AuthService } from 'src/app/1/auth/auth.service';
 import { Subscription } from 'rxjs';
@@ -24,7 +25,8 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     private authService: AuthService,
     private userService: UserService,
     private chatService: ChatService,
-    private notifService: NotifService
+    private notifService: NotifService,
+    public financeService: FinanceService
   ) {}
 
   ngAfterViewInit(): void {}
@@ -50,6 +52,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
       this.me = await this.userService.getMe();
       this.chatService.doInit(this.me);
       this.notifService.doInit(this.me);
+      this.financeService.loadProfile(this.me);
     } else {
       this.me = null;      
     }

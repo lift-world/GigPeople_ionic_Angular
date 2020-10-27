@@ -48,3 +48,31 @@ export interface Bid {
   duration: number;
   timestamp: string;
 }
+
+
+export interface FinancialProfile {
+  balance: number;
+  refTransactions: any[];
+}
+
+export interface EmployerReview {
+  _id: any;
+  refTask: any;
+  refWorker: any;
+  refEmployer: any;
+  star: number;
+  description: string;
+  timestamp: number;
+}
+
+export interface WorkerReview {
+  _id: any;
+  refTask: any;
+  refWorker: any;
+  refEmployer: any;
+  starOnTime: number;
+  starOnBudget: number;
+  star: number;
+  description: string;
+  timestamp: number;
+}

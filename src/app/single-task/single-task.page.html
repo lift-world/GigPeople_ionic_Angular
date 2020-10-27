@@ -31,9 +31,9 @@
           <li ngbNavItem="contract" *ngIf="sss.task.refContract && isMyContract()">
             <a ngbNavLink routerLink="contract">Contract</a>
           </li>
-          <!-- <li ngbNavItem="review" *ngIf="sss.task.status==2">
+          <li ngbNavItem="review" *ngIf="sss.task.refContract && isMyContract() && sss.task.refContract.status==Contract_Status.RELEASED">
             <a ngbNavLink routerLink="review">Review</a>
-          </li> -->
+          </li>
 
         </ul>
 

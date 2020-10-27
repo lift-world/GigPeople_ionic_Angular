@@ -1,3 +1,102 @@
-<p>
-  review works!
-</p>
+<mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+
+<div class="margin-top-50"></div>
+
+<div class="container" *ngIf="!isLoading">
+  <mat-card class="row" *ngIf="workerReview">
+    <ion-toolbar>
+      <ion-title>Review to the freelancer</ion-title>
+      <strong slot="end" style="font-size: larger;">{{sss.task?.refContract.budget | currency}}</strong>
+    </ion-toolbar>
+
+    <mat-card-content style="padding: 1rem;">
+      <app-rating [rate]="workerReview.star"></app-rating>
+
+      <div style="float: right;">
+        <strong class="default-h2">{{sss.task?.title}}</strong>
+        <mat-chip-list #chipList>
+          <mat-chip *ngFor="let skill of sss.task.refSkills">{{skill.title}}</mat-chip>
+        </mat-chip-list>
+      </div>
+      
+      <h3 class="margin-top-20">{{workerReview.description}}</h3>
+
+      <div style="display:flex; align-items: center;" *ngIf="employer">
+        <img [src]="employer?.avatar" class="avatar-user"/>
+        <app-country-flag [code]="employer?.country" [onlyFlag]="true"></app-country-flag>
+        <strong style="margin: 10px;">{{employer?.firstName}} {{employer?.lastName}}</strong>
+        <span>{{workerReview.timestamp | date}}</span>
+      </div>
+      
+    </mat-card-content>
+
+  </mat-card>
+
+  <mat-card class="row" *ngIf="employerReview">
+    <ion-toolbar>
+      <ion-title>Review to the employer</ion-title>
+      <strong slot="end" style="font-size: larger;">{{sss.task?.refContract.budget | currency}}</strong>
+    </ion-toolbar>
+
+    <mat-card-content>
+      <app-rating [rate]="employerReview.star"></app-rating>
+      <div style="float: right;">
+        <strong class="default-h2">{{sss.task?.title}}</strong>
+        <mat-chip-list #chipList>
+          <mat-chip *ngFor="let skill of sss.task.refSkills">{{skill.title}}</mat-chip>
+        </mat-chip-list>
+      </div>
+      
+      <h3 class="margin-top-20">
+        {{employerReview.description}}
+      </h3>
+
+      <div style="display:flex; align-items: center;" *ngIf="worker">
+        <img [src]="worker?.avatar" class="avatar-user"/>
+        <app-country-flag [code]="worker?.country" [onlyFlag]="true"></app-country-flag>
+        <strong style="margin: 10px;">{{worker?.firstName}} {{worker?.lastName}}</strong>
+        <span>{{workerReview.timestamp | date}}</span>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <form class="row" *ngIf="iAmWorker() && !employerReview" [formGroup]="formForEmployer" (submit)="onSubmit()"> 
+    <mat-card style="width: 100%;">
+      <mat-card-header>
+        <ion-toolbar>
+          <mat-card-title>
+            Give your review to the employer
+          </mat-card-title>
+          <button mat-raised-button color="primary" slot="end" type="submit">Submit</button>
+        </ion-toolbar>
+      </mat-card-header >
+      <mat-card-content>
+        <app-rating-control formControlName="star"></app-rating-control>
+        <ion-textarea rows="5" style="background-color: white;" formControlName="description">
+        </ion-textarea>
+      </mat-card-content>
+    </mat-card>
+  </form>
+
+  <form class="row" *ngIf="iAmEmployer() && !workerReview" [formGroup]="formForWorker" (submit)="onSubmit()"> 
+    <mat-card style="width: 100%;">
+      <mat-card-header>
+        <ion-toolbar>
+          <mat-card-title>
+            Give your review to the freelancer
+          </mat-card-title>
+          <button mat-raised-button color="primary" slot="end" type="submit">Submit</button>
+        </ion-toolbar>
+      </mat-card-header >
+      <mat-card-content>
+        On Budget: <app-rating-control formControlName="starOnBudget"></app-rating-control>
+        On Time: <app-rating-control formControlName="starOnTime"></app-rating-control>
+        Total: <app-rating-control formControlName="star"></app-rating-control>
+        <ion-textarea rows="5" style="background-color: white;" formControlName="description">
+        </ion-textarea>
+      </mat-card-content>
+    </mat-card>
+  </form>
+
+
+</div>

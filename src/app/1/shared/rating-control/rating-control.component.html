@@ -5,7 +5,7 @@
     </span>
   </ng-template>
 
-  <ion-badge color="warning" style="color:white; margin-right: 1rem;">{{rate | number:'1.1'}}</ion-badge>
+  <ion-badge color="warning" style="color:white; margin-right: 1rem;">{{value}}</ion-badge>
 
-  <ngb-rating [(rate)]="rate" [starTemplate]="t" [readonly]="true" [max]="5"></ngb-rating>
+  <ngb-rating (rateChange)="handleNgbRateChanged($event)" [starTemplate]="t" [readonly]="false" [max]="5"></ngb-rating>
 </div>

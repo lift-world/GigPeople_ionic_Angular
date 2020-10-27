@@ -20,7 +20,7 @@ export class DetailsComponent implements OnInit {
   }
 
   alreadyBid() {
-    let k = this.sss.task.refBids.findIndex(x => x.refBidder === this.sss.me._id);
+    let k = this.sss.task.refBids.findIndex(x => x.refBidder._id === this.sss.me._id);
     return k > -1;
   }
 

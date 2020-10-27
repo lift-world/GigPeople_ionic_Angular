@@ -58,7 +58,7 @@ export class SingleTaskService {
       try {
         this.isLoading = true;
         let contract = await this.http
-          .post(this.serverURL + "/api/task/awardBid", {
+          .post(this.serverURL + "/api/contract/awardBid", {
             taskId,
             bidId,
             workerId,
@@ -85,13 +85,31 @@ export class SingleTaskService {
       try {
         this.isLoading = true;
         let contract = await this.http
-          .post(this.serverURL + "/api/task/acceptContract", {
+          .post(this.serverURL + "/api/contract/acceptContract", {
             idContract
           })
           .toPromise();
 
-        this.task.refContract = contract; 
-        this.isLoading = false;
+        await this.loadTask();
+        resolve();
+      } catch (err) {
+        console.log(err);
+        this.toastr.error(err.error.message || err.message, "Server");
+      }
+    });
+  }
+
+  async releaseContract(idContract) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        this.isLoading = true;
+        let contract = await this.http
+          .post(this.serverURL + "/api/contract/release", {
+            idContract,
+          })
+          .toPromise();
+
+        await this.loadTask();
         resolve();
       } catch (err) {
         console.log(err);

@@ -1,3 +1,4 @@
+import { RatingControlComponent } from './rating-control/rating-control.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
@@ -36,6 +37,7 @@ import { BadgeNotifyComponent } from './header/badge-notify/badge-notify.compone
     GcsUploaderComponent,
     ValidMarkerComponent,
     RatingComponent,
+    RatingControlComponent,
     CountryFlagComponent,
     UpdateBidComponent,
 /**Not export */
@@ -64,6 +66,7 @@ import { BadgeNotifyComponent } from './header/badge-notify/badge-notify.compone
     GcsUploaderComponent,
     ValidMarkerComponent,
     RatingComponent,
+    RatingControlComponent,
     CountryFlagComponent,
     UpdateBidComponent
   ],
